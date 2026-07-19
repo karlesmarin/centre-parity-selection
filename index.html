@@ -1,0 +1,383 @@
+<title>Wilson-line domain preflight</title>
+
+<style>
+  :root{
+    --paper:#f7f8fa; --raised:#ffffff; --ink:#12151b; --ink-2:#454b57; --ink-3:#767d8c;
+    --rule:#dfe3ea; --rule-2:#eef1f5;
+    --even:#3b4cc0;      /* the even-m comb */
+    --odd:#b8860b;       /* the odd-m comb */
+    --alarm:#b3261e;     /* reserved: the illegal-domain verdict, nothing else */
+    --ok:#1f6b4a;
+    --hatch:rgba(179,38,30,.14);
+    --serif:Charter,"Bitstream Charter","Sitka Text",Cambria,Georgia,serif;
+    --sans:"Segoe UI",Inter,system-ui,-apple-system,"Helvetica Neue",sans-serif;
+    --mono:"JetBrains Mono","SF Mono",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:where(:not([data-theme="light"])){
+      --paper:#12151b; --raised:#181c24; --ink:#e9ecf2; --ink-2:#aab2c0; --ink-3:#79808f;
+      --rule:#2a3038; --rule-2:#1e232b;
+      --even:#8f9dff; --odd:#e0b13a; --alarm:#ff7a6e; --ok:#5fc79a;
+      --hatch:rgba(255,122,110,.16);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#12151b; --raised:#181c24; --ink:#e9ecf2; --ink-2:#aab2c0; --ink-3:#79808f;
+    --rule:#2a3038; --rule-2:#1e232b;
+    --even:#8f9dff; --odd:#e0b13a; --alarm:#ff7a6e; --ok:#5fc79a;
+    --hatch:rgba(255,122,110,.16);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:60rem;margin:0 auto;padding:3rem 1.5rem 5rem;display:flex;
+        flex-direction:column;gap:2.25rem}
+
+  header{display:flex;flex-direction:column;gap:.6rem;
+         border-bottom:1px solid var(--rule);padding-bottom:1.5rem}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.13em;
+           text-transform:uppercase;color:var(--ink-3)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.4vw,2.4rem);
+     line-height:1.15;margin:0;text-wrap:balance;letter-spacing:-.01em}
+  .sub{color:var(--ink-2);max-width:62ch;margin:0}
+
+  .panel{background:var(--raised);border:1px solid var(--rule);border-radius:3px;
+         padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:1.1rem}
+  .panel > h2{font-family:var(--sans);font-size:.76rem;letter-spacing:.12em;
+              text-transform:uppercase;color:var(--ink-3);margin:0;font-weight:600}
+
+  .tabs{display:flex;gap:.4rem;flex-wrap:wrap}
+  .tab{font-family:var(--mono);font-size:.8rem;padding:.42rem .8rem;cursor:pointer;
+       background:transparent;color:var(--ink-2);border:1px solid var(--rule);border-radius:2px}
+  .tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .tab:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible{
+       outline:2px solid var(--even);outline-offset:2px}
+
+  .fields{display:flex;gap:1.1rem;flex-wrap:wrap;align-items:flex-end}
+  .f{display:flex;flex-direction:column;gap:.3rem}
+  .f label{font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+  .f input{width:5.2rem;font-family:var(--mono);font-size:1.05rem;padding:.42rem .55rem;
+           background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:2px;
+           font-variant-numeric:tabular-nums}
+  textarea{width:100%;min-height:7rem;font-family:var(--mono);font-size:.85rem;padding:.6rem;
+           background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:2px;resize:vertical}
+  .hint{font-size:.82rem;color:var(--ink-3);margin:0}
+  .presets{display:flex;gap:.4rem;flex-wrap:wrap}
+  .preset{font-family:var(--mono);font-size:.76rem;padding:.3rem .6rem;cursor:pointer;
+          background:transparent;color:var(--ink-2);border:1px dashed var(--rule);border-radius:2px}
+
+  /* ---- the verdict: summary before detail, state encoded in form ---- */
+  .verdict{border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--raised)}
+  .vhead{display:flex;align-items:baseline;gap:.9rem;flex-wrap:wrap;
+         padding:1.15rem 1.5rem;border-bottom:1px solid var(--rule)}
+  .vmark{font-family:var(--mono);font-size:1.32rem;font-weight:700;letter-spacing:-.01em}
+  .vmark.bad{color:var(--alarm)} .vmark.good{color:var(--ok)}
+  .vsub{color:var(--ink-2);font-size:.94rem}
+  .vbody{padding:1.35rem 1.5rem;display:flex;flex-direction:column;gap:1.35rem}
+
+  .domain{display:flex;flex-direction:column;gap:.45rem}
+  .dbar{position:relative;height:2.6rem;border:1px solid var(--rule);border-radius:2px;
+        background:var(--paper);overflow:hidden}
+  .dhalf{position:absolute;inset:0 50% 0 0;border-right:1px dashed var(--alarm)}
+  .dill{position:absolute;inset:0 0 0 50%;
+        background-image:repeating-linear-gradient(45deg,var(--hatch) 0 6px,transparent 6px 12px)}
+  .dtick{position:absolute;top:0;bottom:0;width:1px;background:var(--rule)}
+  .dlab{position:absolute;font-family:var(--mono);font-size:.7rem;color:var(--ink-3);top:.42rem}
+  .dnote{font-family:var(--mono);font-size:.78rem;color:var(--ink-2)}
+
+  .combs{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.1rem}
+  .comb{display:flex;flex-direction:column;gap:.45rem}
+  .comb h3{margin:0;font-family:var(--mono);font-size:.76rem;font-weight:600;color:var(--ink-2)}
+  .teeth{display:flex;align-items:flex-end;gap:5px;height:3rem;
+         border-bottom:1px solid var(--rule);padding-bottom:2px}
+  .t{flex:1;border-radius:1px 1px 0 0}
+  .t.full{background:currentColor} .t.empty{background:transparent;border:1px dashed currentColor;opacity:.5}
+  .comb.even{color:var(--even)} .comb.odd{color:var(--odd)}
+  .comb p{margin:0;font-size:.82rem;color:var(--ink-3)}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  .scroll{overflow-x:auto}
+  th,td{text-align:left;padding:.5rem .7rem;border-bottom:1px solid var(--rule-2);vertical-align:top}
+  th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+     color:var(--ink-3);font-weight:600;white-space:nowrap}
+  td.v{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;
+        padding:.12rem .42rem;border:1px solid var(--rule);border-radius:2px;color:var(--ink-3);
+        white-space:nowrap}
+  .chip.thm{border-color:var(--ok);color:var(--ok)}
+  .chip.cnj{border-style:dashed}
+
+  footer{border-top:1px solid var(--rule);padding-top:1.35rem;display:flex;flex-direction:column;
+         gap:.5rem;font-size:.86rem;color:var(--ink-3)}
+  footer a{color:var(--ink-2)}
+  code{font-family:var(--mono);font-size:.9em;background:var(--rule-2);padding:.08em .34em;border-radius:2px}
+  .hide{display:none}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Preflight &middot; gauge&ndash;Higgs orbifold models</div>
+  <h1>Is your Wilson-line fundamental domain legal?</h1>
+  <p class="sub">Most computations of a one-loop Wilson-line potential on
+    T&sup2;/&#8484;&#8322; halve the search region in &alpha;&#8322;. That halving rests on a
+    hypothesis about your representation, and for every representation able to host a
+    Standard-Model quark generation the hypothesis fails. Nothing warns you: a restricted
+    minimiser returns a boundary point that looks like a vacuum. This check costs one parity bit.</p>
+</header>
+
+<div class="panel">
+  <h2>Describe your model</h2>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true"  data-m="labels">SU(4) Dynkin labels</button>
+    <button class="tab" role="tab" aria-selected="false" data-m="table">Paste an (m,q) table</button>
+    <button class="tab" role="tab" aria-selected="false" data-m="alphabet">Other group</button>
+  </div>
+
+  <div id="p-labels">
+    <div class="fields">
+      <div class="f"><label for="a">a</label><input id="a" type="number" value="0" min="0"></div>
+      <div class="f"><label for="b">b</label><input id="b" type="number" value="2" min="0"></div>
+      <div class="f"><label for="c">c</label><input id="c" type="number" value="1" min="0"></div>
+    </div>
+    <p class="hint" style="margin-top:.9rem">Highest-weight labels of an irreducible
+      representation of SU(4).</p>
+    <div class="presets" style="margin-top:.6rem">
+      <button class="preset" data-l="0,2,1">60 &mdash; smallest admissible</button>
+      <button class="preset" data-l="4,0,0">35 &mdash; AHMN&rsquo;s fermion</button>
+      <button class="preset" data-l="1,0,1">15 &mdash; gauge adjoint</button>
+      <button class="preset" data-l="0,1,0">6 &mdash; degenerate</button>
+      <button class="preset" data-l="1,3,2">360</button>
+    </div>
+  </div>
+
+  <div id="p-table" class="hide">
+    <p class="hint">One row per Kaluza&ndash;Klein tower: <code>m, q, multiplicity</code>.
+      Both pairings are <em>measured</em> here, not inferred, so this path stays valid for
+      spectra outside SU(4).</p>
+    <textarea id="tbl" spellcheck="false">1,0,8
+1,1,8
+2,0,11
+2,1,3
+3,0,4
+3,1,4
+4,0,5</textarea>
+  </div>
+
+  <div id="p-alphabet" class="hide">
+    <p class="hint">One row per diagonal slot of the group element the orbifold hands you:
+      <code>twist sign (&plusmn;1), Wilson-line charge</code>. The rule exists only when a
+      unit shift equals a central element up to a Weyl reflection.</p>
+    <textarea id="alph" spellcheck="false">1,0
+1,1
+-1,0
+1,-1</textarea>
+  </div>
+</div>
+
+<div class="verdict" id="out"></div>
+
+<footer>
+  <p><strong>Method.</strong> Advancing the Wilson line by one period is, up to a Weyl
+    reflection, multiplication by the central element &minus;<strong>1</strong> of
+    <em>Z</em>(SU(4)). A representation answers a central element with the scalar
+    &zeta;<sup>c(R)</sup> &mdash; that is what <em>n</em>-ality is &mdash; so the character
+    obeys <code>D(&minus;t) = (&minus;1)<sup>a+2b+3c</sup> D(t)</code>. Twist multiplicities
+    therefore pair at even <em>m</em> when the centre charge is odd and at odd <em>m</em> when
+    it is even, never both, outside a degenerate class classified exactly and certified in
+    Lean&nbsp;4.</p>
+  <p>Part III of a series &middot;
+    <a href="https://doi.org/10.5281/zenodo.21438227">10.5281/zenodo.21438227</a> &middot;
+    <a href="https://github.com/karlesmarin/centre-parity-selection">source and scripts</a>.
+    Carles Mar&iacute;n, with Claude (Anthropic) as AI research assistant.</p>
+</footer>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const el = (t,c,x) => { const n=document.createElement(t); if(c)n.className=c;
+                        if(x!==undefined)n.innerHTML=x; return n; };
+
+/* ---------- the mathematics, all of it ---------- */
+const parityOdd  = (a,b,c) => ((a+2*b+3*c) % 2) === 1;
+const degenerate = (a,b,c) => (b%2===1) && (((a%2===1)&&(c%2===1)) || a===c);
+const admissible = (a,b,c) => parityOdd(a,b,c) && b>=1 && (a+b+c)>=3;
+
+function fromLabels(a,b,c){
+  const odd = parityOdd(a,b,c), deg = degenerate(a,b,c);
+  return {
+    boxes:a+2*b+3*c, odd, deg, adm:admissible(a,b,c),
+    evenNotch: odd || deg,          // pairs at even m
+    oddPair:  (!odd) || deg,        // pairs at odd m  = AHMN's hypothesis
+    source:"labels"
+  };
+}
+function fromTable(rows){
+  const d = new Map();
+  for(const [m,q,mu] of rows) d.set(m+"|"+q, (d.get(m+"|"+q)||0)+mu);
+  const ms = [...new Set(rows.map(r=>r[0]))];
+  const bal = par => ms.filter(m=>((m%2)+2)%2===par)
+      .every(m => (d.get(m+"|0")||0) === (d.get(m+"|1")||0));
+  const firstFail = par => { for(const m of ms.sort((x,y)=>x-y))
+      if(((m%2)+2)%2===par && (d.get(m+"|0")||0)!==(d.get(m+"|1")||0))
+        return {m, q0:d.get(m+"|0")||0, q1:d.get(m+"|1")||0}; return null; };
+  return { evenNotch:bal(0), oddPair:bal(1), failOdd:firstFail(1), failEven:firstFail(0),
+           source:"table" };
+}
+/* -A == A|_{t->-t} as multisets, with A = {eps_i t^{c_i}} */
+function ruleExists(slots){
+  const key = ([s,p]) => s+"@"+p;
+  const neg = slots.map(([s,p])=>[-s,p]).map(key).sort();
+  const flp = slots.map(([s,p])=>[s*((p%2===0)?1:-1),p]).map(key).sort();
+  const neutral = slots.filter(([,p])=>p===0);
+  const bal = neutral.filter(([s])=>s>0).length === neutral.filter(([s])=>s<0).length;
+  return { ok: neg.join()===flp.join(), neutral:neutral.length, balanced:bal };
+}
+
+/* ---------- rendering ---------- */
+function comb(kind, full, note){
+  const d = el("div","comb "+kind);
+  d.append(el("h3",null, kind==="even" ? "even&nbsp;m" : "odd&nbsp;m"));
+  const t = el("div","teeth");
+  const H=[.55,.9,.4,.75,.5,.85,.45,.7];
+  for(let i=0;i<8;i++){ const b=el("div","t "+(full?"full":"empty"));
+    b.style.height=(H[i]*100)+"%"; t.append(b); }
+  d.append(t, el("p",null,note));
+  return d;
+}
+function domainBar(half){
+  const w = el("div","domain");
+  const bar = el("div","dbar");
+  if(half){ bar.append(el("div","dhalf"), el("div","dill")); }
+  const t=el("div","dtick"); t.style.left="50%"; bar.append(t);
+  const l0=el("div","dlab","0"); l0.style.left=".5rem";
+  const lh=el("div","dlab","&frac12;"); lh.style.left="calc(50% + .4rem)";
+  const l1=el("div","dlab","1"); l1.style.right=".5rem";
+  bar.append(l0,lh,l1);
+  w.append(bar, el("div","dnote", half
+    ? "legal search region &nbsp;&alpha;&#8322; &isin; [0, &frac12;] &mdash; the hatched half is redundant"
+    : "legal search region &nbsp;&alpha;&#8322; &isin; [0, 1] &mdash; <strong>scan the whole of it</strong>"));
+  return w;
+}
+function row(k,v,chip,cls){
+  const tr=el("tr"); tr.append(el("th",null,k));
+  tr.append(el("td","v "+(cls||""),v));
+  tr.append(el("td",null,chip?`<span class="chip ${chip[1]||""}">${chip[0]}</span>`:""));
+  return tr;
+}
+
+function render(r, labels){
+  const out=$("#out"); out.textContent="";
+  const legalHalf = r.oddPair === true;
+
+  const head=el("div","vhead");
+  head.append(el("div","vmark "+(legalHalf?"good":"bad"),
+      legalHalf ? "HALF DOMAIN OK" : "HALF DOMAIN NOT VALID"));
+  head.append(el("div","vsub", legalHalf
+      ? "the odd-m pairing holds for this spectrum, so &alpha;&#8322; &isin; [0,&frac12;] is legitimate"
+      : "the odd-m pairing fails, so restricting &alpha;&#8322; can return a boundary point that is not a vacuum"));
+  out.append(head);
+
+  const body=el("div","vbody");
+  body.append(domainBar(legalHalf));
+
+  const c=el("div","combs");
+  c.append(comb("even", r.evenNotch,
+    r.evenNotch ? "multiplicities balance &mdash; this sector is empty of the odd-k&#8322; harmonics"
+                : "multiplicities do not balance here"));
+  c.append(comb("odd", r.oddPair,
+    r.oddPair ? "multiplicities balance &mdash; AHMN&rsquo;s hypothesis holds"
+              : "multiplicities do not balance &mdash; AHMN&rsquo;s hypothesis fails"));
+  body.append(c);
+
+  const sc=el("div","scroll"), t=el("table");
+  const tb=el("tbody");
+  if(r.source==="labels"){
+    const [a,b,cc]=labels;
+    tb.append(row("labels (a,b,c)", `(${a}, ${b}, ${cc})`));
+    tb.append(row("centre charge a+2b+3c", `${r.boxes} &nbsp;(${r.odd?"odd":"even"})`,
+                  ["theorem","thm"]));
+    tb.append(row("tower pairs at", r.deg ? "both (degenerate class)"
+                                          : (r.odd ? "even m" : "odd m"), ["theorem","thm"]));
+    tb.append(row("in the degenerate class", r.deg?"yes":"no", ["theorem","thm"]));
+    tb.append(row("can host a quark generation", r.adm?"yes":"no", ["theorem","thm"]));
+    if(r.adm) tb.append(row("consequence",
+      "admissible &rArr; centre charge odd &rArr; half domain invalid", ["theorem","thm"]));
+  } else if(r.source==="table"){
+    tb.append(row("even-m notch", r.evenNotch?"holds":"fails", ["measured"]));
+    tb.append(row("odd-m pairing", r.oddPair?"holds":"fails", ["measured"]));
+    if(r.failOdd) tb.append(row("first odd-m imbalance",
+      `m = ${r.failOdd.m}: ${r.failOdd.q0} vs ${r.failOdd.q1}`, ["measured"]));
+    if(r.failEven) tb.append(row("first even-m imbalance",
+      `m = ${r.failEven.m}: ${r.failEven.q0} vs ${r.failEven.q1}`, ["measured"]));
+  }
+  t.append(tb); sc.append(t); body.append(sc);
+  out.append(body);
+}
+
+function renderAlphabet(slots){
+  const out=$("#out"); out.textContent="";
+  const r=ruleExists(slots);
+  const head=el("div","vhead");
+  head.append(el("div","vmark "+(r.ok?"good":"bad"),
+      r.ok ? "SELECTION RULE EXISTS" : "NO SELECTION RULE"));
+  head.append(el("div","vsub", r.ok
+    ? "a unit shift is Weyl-equivalent to a central element, so a centre-parity rule applies"
+    : "no central element is reached, so this alphabet carries no centre-parity rule"));
+  out.append(head);
+  const body=el("div","vbody"), sc=el("div","scroll"), t=el("table"), tb=el("tbody");
+  tb.append(row("slots", String(slots.length)));
+  tb.append(row("Wilson-line-neutral slots", String(r.neutral)));
+  tb.append(row("their twist signs balance", r.balanced?"yes":"no", ["theorem","thm"]));
+  tb.append(row("shift &equiv; central element (up to Weyl)", r.ok?"yes":"no", ["theorem","thm"]));
+  tb.append(row("legal region in &alpha;&#8322;",
+      r.ok ? "depends on the rep&rsquo;s centre charge" : "[0, 1] &mdash; assume nothing",
+      ["conjecture for d &ne; 2","cnj"]));
+  t.append(tb); sc.append(t);
+  body.append(el("p","hint",
+    "Proved for a central element of order 2. For higher order the sector count is conjectural &mdash; "+
+    "the paper states it so it can be killed."));
+  body.append(sc); out.append(body);
+}
+
+/* ---------- wiring ---------- */
+let mode="labels";
+function run(){
+  try{
+    if(mode==="labels"){
+      const a=+$("#a").value||0, b=+$("#b").value||0, c=+$("#c").value||0;
+      render(fromLabels(a,b,c),[a,b,c]);
+    } else if(mode==="table"){
+      const rows=$("#tbl").value.trim().split(/\n+/).map(l=>l.split(/[,\s]+/).map(Number))
+                 .filter(r=>r.length>=3 && r.every(x=>Number.isFinite(x)));
+      if(!rows.length) throw new Error("no readable rows");
+      render(fromTable(rows));
+    } else {
+      const s=$("#alph").value.trim().split(/\n+/).map(l=>l.split(/[,\s]+/).map(Number))
+              .filter(r=>r.length>=2 && r.every(x=>Number.isFinite(x)));
+      if(!s.length) throw new Error("no readable rows");
+      renderAlphabet(s);
+    }
+  }catch(e){
+    $("#out").innerHTML =
+      '<div class="vhead"><div class="vmark bad">CANNOT READ THAT</div>'+
+      '<div class="vsub">'+e.message+'. Each line needs comma- or space-separated numbers.</div></div>';
+  }
+}
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected", x===t));
+  mode=t.dataset.m;
+  for(const m of ["labels","table","alphabet"])
+    $("#p-"+m).classList.toggle("hide", m!==mode);
+  run();
+}));
+document.querySelectorAll(".preset").forEach(p=>p.addEventListener("click",()=>{
+  const [a,b,c]=p.dataset.l.split(",");
+  $("#a").value=a; $("#b").value=b; $("#c").value=c; run();
+}));
+["a","b","c"].forEach(i=>$("#"+i).addEventListener("input",run));
+$("#tbl").addEventListener("input",run);
+$("#alph").addEventListener("input",run);
+run();
+</script>
