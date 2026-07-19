@@ -40,7 +40,9 @@ investigación IA contra una verdad-base verificable por máquina (aritmética r
 sobre los sistemas de pesos de $SU(n)$ en SageMath, y un certificado en Lean~4 libre de
 \texttt{sorry} para el teorema central); todo número de este trabajo se regenera desde los
 scripts anexos.}}
-\date{\today\\[2pt]\small DOI: \href{https://doi.org/10.5281/zenodo.21438227}{10.5281/zenodo.21438227}}
+\date{\today\\[2pt]\small
+DOI: \href{https://doi.org/10.5281/zenodo.21438226}{10.5281/zenodo.21438226}
+\ \textnormal{(DOI de concepto --- resuelve siempre a la versión vigente)}}
 
 \begin{document}
 \maketitle
@@ -804,11 +806,17 @@ curiosidad nuestra. Es una hipótesis ya en uso --- y sostiene el argumento.
 Al calcular el potencial a un loop de la línea de Wilson, AHMN reducen la región de búsqueda.
 Observan~\cite[\S4.3]{AHMN}, en el original:
 \begin{quote}\itshape
-``For odd $m$, the spectrum with $(m,q)=(m,1)$ at a given $\alpha_2$ is equivalent to that
-with $(m,q)=(m,0)$ at $\alpha_2+1$. Hence, if the effective potential contains an equal
-number of KK mode with $(m,0)$ and $(m,1)$ for odd $m$, their combined contribution is also
-periodic under $\alpha_2\to\alpha_2+1$.''
+``For even $m$, the combination $(m\alpha_2+q)/2$ is invariant under
+$\alpha_2\to\alpha_2+1$ up to an integer shift, and hence each such tower is periodic with
+period 1 in the $\alpha_2$ direction. For odd $m$, the spectrum with $(m,q)=(m,1)$ at a given
+$\alpha_2$ is equivalent to that with $(m,q)=(m,0)$ at $\alpha_2+1$. Hence, if the effective
+potential contains an equal number of KK mode with $(m,0)$ and $(m,1)$ for odd $m$, their
+combined contribution is also periodic under $\alpha_2\to\alpha_2+1$.''
 \end{quote}
+Citamos también la frase de $m$ par porque juega a favor del argumento y no en contra: las
+torres de $m$ par son periódicas de período $1$ por sí solas, sea cual sea la representación,
+de modo que el sector de $m$ impar es el \emph{único} lugar donde la periodicidad puede
+obstruirse --- y por eso una representación que falle ahí pierde la reducción por completo.
 La dan luego por satisfecha mediante inspección --- \emph{``From Table~1, we see that\dots''} ---
 para su propio contenido de campos, y obtienen la región
 fundamental~\cite[Ec.~(4.15)]{AHMN}
@@ -933,6 +941,27 @@ admisible para el Modelo Estándar. Una minimización para tal representación d
 toro completo; una búsqueda restringida al medio dominio puede devolver un punto de frontera
 que no es un vacío.
 \end{corolario}
+
+\paragraph{Relación con el programa de clases de equivalencia de condiciones de contorno.}
+Existe una literatura desarrollada sobre redundancia gauge en exactamente este marco, y
+conviene decir con precisión por qué no contiene el enunciado anterior. Kawamura y
+colaboradores, y más recientemente Takeuchi e Inagaki, clasifican \emph{clases de
+equivalencia de condiciones de contorno} en $S^1/\ZZ_2$ y $T^2/\ZZ_m$ bajo las
+transformaciones gauge que las conectan~\cite{HHK,KawamuraMiura,Takeuchi1,Takeuchi2}. Su
+invariante es una ley de conservación de la traza: $\mathrm{tr}\,P_i$ se preserva en cada
+punto fijo, de modo que las degeneraciones de autovalores de las matrices de condiciones de
+contorno no pueden cambiar dentro de una clase.
+
+Es un invariante distinto sobre un objeto distinto. El suyo se evalúa sobre las
+\emph{matrices de condiciones de contorno} $N\times N$ y restringe qué condiciones discretas
+pueden identificarse; el nuestro se evalúa sobre una \emph{representación irreducible}
+arbitraria a condiciones de contorno fijas, y restringe qué armónicos del potencial pueden ser
+no nulos. Ninguno calcula el otro. Dos rasgos de ese programa hacen la separación nítida y no
+una cuestión de énfasis: declina calcular potencial efectivo alguno (\emph{``we do not carry
+them out since our purpose is not to study the dynamics of models but to classify the
+BCs''}~\cite[p.~7]{KawamuraMiura}), y señala que la traza de la matriz de \emph{traslación}
+no se conserva en general~\cite[n.~3]{Takeuchi1} --- siendo el sector de traslación
+precisamente donde vive nuestro desplazamiento $\alpha_2\to\alpha_2+1$.
 
 \paragraph{Y ninguna otra identificación lo rescata.} Agrandar un dominio fundamental invita
 a la objeción obvia: quizá alguna \emph{otra} identificación, no considerada aquí, vuelva a
@@ -1460,6 +1489,15 @@ arXiv:math/0311159.
 \bibitem{CiucuKrattenthaler} M.~Ciucu, C.~Krattenthaler, \emph{A factorization theorem for
 classical group characters, with applications to plane partitions and rhombus tilings},
 arXiv:0812.1251.
+\bibitem{HHK} N.~Haba, Y.~Hosotani, Y.~Kawamura, \emph{Classification and dynamics of
+equivalence classes in $SU(N)$ gauge theory on the orbifold $S^1/Z_2$}, Prog.\ Theor.\ Phys.\
+\textbf{111} (2004) 265, arXiv:hep-ph/0309088.
+\bibitem{KawamuraMiura} Y.~Kawamura, T.~Miura, \emph{Equivalence Classes of Boundary
+Conditions in $SU(N)$ Gauge Theory on 2-dimensional Orbifolds}, arXiv:0905.4123.
+\bibitem{Takeuchi1} K.~Takeuchi, T.~Inagaki, \emph{A new classification method for
+equivalence classes on $S^1/Z_2$ and $T^2/Z_3$}, PTEP \textbf{2024}, arXiv:2401.09809.
+\bibitem{Takeuchi2} K.~Takeuchi, T.~Inagaki, \emph{Trace conservation laws in $T^2/Z_m$
+orbifold gauge theories}, arXiv:2404.19411.
 \bibitem{Feruglio} F.~Feruglio, \emph{Are neutrino masses modular forms?}, in
 \emph{From My Vast Repertoire: Guido Altarelli's Legacy}, World Scientific (2019) 227,
 arXiv:1706.08749.

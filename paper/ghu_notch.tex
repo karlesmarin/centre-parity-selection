@@ -38,7 +38,9 @@ research assistant against a common machine-verifiable ground truth (exact ratio
 arithmetic on $SU(n)$ weight systems in SageMath, and a \texttt{sorry}-free Lean~4
 certificate for the central theorem); every number in this paper regenerates from the
 ancillary scripts.}}
-\date{\today\\[2pt]\small DOI: \href{https://doi.org/10.5281/zenodo.21438227}{10.5281/zenodo.21438227}}
+\date{\today\\[2pt]\small
+DOI: \href{https://doi.org/10.5281/zenodo.21438226}{10.5281/zenodo.21438226}
+\ \textnormal{(concept DOI --- always resolves to the current version)}}
 
 \begin{document}
 \maketitle
@@ -779,11 +781,17 @@ ours. It is a hypothesis already in use --- and it is load-bearing.
 In computing the one-loop Wilson-line potential, AHMN reduce the search region. They
 observe~\cite[\S4.3]{AHMN}:
 \begin{quote}\itshape
-``For odd $m$, the spectrum with $(m,q)=(m,1)$ at a given $\alpha_2$ is equivalent to that
-with $(m,q)=(m,0)$ at $\alpha_2+1$. Hence, if the effective potential contains an equal
-number of KK mode with $(m,0)$ and $(m,1)$ for odd $m$, their combined contribution is also
-periodic under $\alpha_2\to\alpha_2+1$.''
+``For even $m$, the combination $(m\alpha_2+q)/2$ is invariant under
+$\alpha_2\to\alpha_2+1$ up to an integer shift, and hence each such tower is periodic with
+period 1 in the $\alpha_2$ direction. For odd $m$, the spectrum with $(m,q)=(m,1)$ at a given
+$\alpha_2$ is equivalent to that with $(m,q)=(m,0)$ at $\alpha_2+1$. Hence, if the effective
+potential contains an equal number of KK mode with $(m,0)$ and $(m,1)$ for odd $m$, their
+combined contribution is also periodic under $\alpha_2\to\alpha_2+1$.''
 \end{quote}
+We quote the even-$m$ sentence as well, because it works for the argument rather than against
+it: the even-$m$ towers are individually period-$1$ whatever the representation, so the
+odd-$m$ sector is the \emph{only} place where the periodicity can be obstructed --- which is
+why a representation that fails there loses the reduction outright.
 They then discharge the hypothesis by inspection --- \emph{``From Table~1, we see that\dots''}
 --- for their own field content, and obtain the fundamental
 region~\cite[Eq.~(4.15)]{AHMN}
@@ -906,6 +914,26 @@ Standard-Model-admissible representation. A minimization for such a representati
 the full torus; a search restricted to the half-domain can return a boundary point that is
 not a vacuum.
 \end{corollary}
+
+\paragraph{Relation to the boundary-condition equivalence-class programme.} There is a
+developed literature on gauge redundancy in exactly this setting, and it is worth saying
+precisely why it does not contain the statement above. Kawamura and collaborators, and more
+recently Takeuchi and Inagaki, classify \emph{equivalence classes of boundary conditions} on
+$S^1/\ZZ_2$ and $T^2/\ZZ_m$ under the gauge transformations that connect
+them~\cite{HHK,KawamuraMiura,Takeuchi1,Takeuchi2}. Their invariant is a trace conservation
+law: $\mathrm{tr}\,P_i$ is preserved at each fixed point, so the eigenvalue degeneracies of
+the boundary-condition matrices cannot change within a class.
+
+That is a different invariant on a different object. Theirs is evaluated on the $N\times N$
+\emph{boundary-condition matrices} and constrains which discrete boundary conditions may be
+identified; ours is evaluated on an arbitrary \emph{irreducible representation} at fixed
+boundary conditions, and constrains which harmonics of the potential may be non-zero. The two
+do not compute one another. Two features of that programme make the separation sharp rather
+than a matter of emphasis: it declines to compute an effective potential at all
+(``we do not carry them out since our purpose is not to study the dynamics of models but to
+classify the BCs''~\cite[p.~7]{KawamuraMiura}), and it notes that the trace of the
+\emph{translation} matrix is not in general conserved~\cite[fn.~3]{Takeuchi1} --- the
+translation sector being precisely where our shift $\alpha_2\to\alpha_2+1$ lives.
 
 \paragraph{And no other identification rescues it.} Enlarging a fundamental domain invites
 the obvious objection: perhaps some \emph{other} identification, not considered here, shrinks
@@ -1420,6 +1448,15 @@ arXiv:math/0311159.
 \bibitem{CiucuKrattenthaler} M.~Ciucu, C.~Krattenthaler, \emph{A factorization theorem for
 classical group characters, with applications to plane partitions and rhombus tilings},
 arXiv:0812.1251.
+\bibitem{HHK} N.~Haba, Y.~Hosotani, Y.~Kawamura, \emph{Classification and dynamics of
+equivalence classes in $SU(N)$ gauge theory on the orbifold $S^1/Z_2$}, Prog.\ Theor.\ Phys.\
+\textbf{111} (2004) 265, arXiv:hep-ph/0309088.
+\bibitem{KawamuraMiura} Y.~Kawamura, T.~Miura, \emph{Equivalence Classes of Boundary
+Conditions in $SU(N)$ Gauge Theory on 2-dimensional Orbifolds}, arXiv:0905.4123.
+\bibitem{Takeuchi1} K.~Takeuchi, T.~Inagaki, \emph{A new classification method for
+equivalence classes on $S^1/Z_2$ and $T^2/Z_3$}, PTEP \textbf{2024}, arXiv:2401.09809.
+\bibitem{Takeuchi2} K.~Takeuchi, T.~Inagaki, \emph{Trace conservation laws in $T^2/Z_m$
+orbifold gauge theories}, arXiv:2404.19411.
 \bibitem{Feruglio} F.~Feruglio, \emph{Are neutrino masses modular forms?}, in
 \emph{From My Vast Repertoire: Guido Altarelli's Legacy}, World Scientific (2019) 227,
 arXiv:1706.08749.

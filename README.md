@@ -1,6 +1,6 @@
 # 🚪 A Centre-Charge Selection Rule for the Wilson-Line Potential
 
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21438227-1B6F8C?logo=doi&logoColor=white)](https://doi.org/10.5281/zenodo.21438227)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21438226-1B6F8C?logo=doi&logoColor=white)](https://doi.org/10.5281/zenodo.21438226)
 [![License](https://img.shields.io/badge/License-Apache_2.0-B5530F)](LICENSE)
 [![Lean](https://img.shields.io/badge/Lean_4-sorry--free-2C2C2C?logo=lean)](lean/NotchCentreCharge.lean)
 [![Verified](https://img.shields.io/badge/SageMath-exact_to_10648_reps-2C2C2C)](https://www.sagemath.org/)
@@ -8,7 +8,7 @@
 
 **The fundamental domain of gauge–Higgs unification is representation-dependent.**
 
-**📄 Paper (EN + ES), Lean certificate and every verification script on Zenodo → https://doi.org/10.5281/zenodo.21438227**
+**📄 Paper (EN + ES), Lean certificate and every verification script on Zenodo → https://doi.org/10.5281/zenodo.21438226**
 
 > ### 📚 Part **III** of a series
 > - **Part I — *Anomaly- and Tadpole-Compatible Fermion Completion of 6D SU(4) GHU***
@@ -129,7 +129,7 @@ scripts/   every script that regenerates a number quoted in the paper
   title  = {A Centre-Charge Selection Rule for the Wilson-Line Potential:
             The Fundamental Domain of Gauge--Higgs Unification Is Representation-Dependent},
   year   = {2026},
-  doi    = {10.5281/zenodo.21438227},
+  doi    = {10.5281/zenodo.21438226},
   note   = {Part III of a series}
 }
 ```
