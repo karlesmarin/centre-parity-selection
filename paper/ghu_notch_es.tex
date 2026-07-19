@@ -342,9 +342,13 @@ corolario de \emph{desacoplamiento} y la degeneración de orden dominante result
 condiciones de contorno (\S\ref{sec:projection}), que en esta construcción se venía usando
 como un input calibrado. La Figura~\ref{fig:roadmap} es la ruta.
 
-\emph{Establecido aquí:} el principio --- un período de línea de Wilson es una transformación
-gauge central, de modo que la carga del centro es un enunciado sobre el potencial y no solo
-sobre la materia. \emph{Abierto:} sus cuatro lecturas, que son el resto del trabajo.
+\emph{Establecido aquí:} que en este orbifold el desplazamiento unidad $\alpha_2\to\alpha_2+1$,
+que por sí solo \emph{no} es central, es Weyl-equivalente al elemento central $-\mathbf{1}$,
+aportando el twist $U_6$ el signo compensador --- de modo que la gradación estándar por
+centro y $n$-alidad de un potencial de holonomía~\cite{Weiss,GPY,RobergeWeiss,UnsalYaffe}
+gobierna este modelo, donde no es manifiesta, y la carga del centro pasa a ser un enunciado
+sobre el potencial y no solo sobre la materia. \emph{Abierto:} sus cuatro lecturas, que son el
+resto del trabajo.
 
 
 
@@ -703,6 +707,28 @@ $(a,b,c)\in\mathcal Z$, y como todo miembro de $\mathcal Z$ tiene $\lam$ par, $\
 disjunta de la clase que satisface la puerta de la Parte~II.
 \end{teorema}
 
+Las dos ramas no están al mismo nivel y las separamos. La primera, $a,b,c$ todos impares, dice
+que todo $\mu_j$ tiene la misma paridad, con lo que las dos filas constantes del bialternante se
+vuelven proporcionales; es la obstrucción clásica de paridad del $\beta$-conjunto y no tiene
+nada de especial de nuestro alfabeto --- es exactamente el lugar de ceros de
+$s_\lambda(1,-1,y_1,y_2)$ con $y_1,y_2$ \emph{libres}. Debe leerse como estándar. La segunda,
+$a=c$ con $b$ impar, no es una identidad de funciones simétricas en variables libres: liberada
+de $y_2=y_1^{-1}$ deja de anularse, y sobre las etiquetas hasta $5$ los dos lugares difieren en
+exactamente las seis formas $(0,1,0)$, $(0,3,0)$, $(2,1,2)$, $(2,3,2)$, $(4,1,4)$, $(4,3,4)$,
+todas de esta rama. Vive sobre el coset ortogonal y en ningún otro sitio, y por eso su
+enunciado natural es el de la \S\ref{sec:reflections}: el carácter de $GL(4)$ se anula
+idénticamente sobre $O(4)^-$, equivalentemente
+$\mathrm{Res}\,V_\lambda\cong\mathrm{Res}\,V_\lambda\otimes\det$.
+
+Un antecedente merece ser nombrado para esta rama en concreto. El teorema de factorización de
+Ayyer y Behrend~\cite[Tma.~1]{AyyerBehrend} se enuncia para particiones con
+$\lambda_1+\lambda_4=\lambda_2+\lambda_3=2k$, que para cuatro filas es exactamente $a=c$, y su
+caso de semipartición es exactamente $b$ impar --- su hipótesis de forma es nuestra rama, en su
+subcaso más delicado. Su alfabeto es $(x_1,x_2,\bar x_1,\bar x_2)$, la componente identidad, de
+modo que el teorema no alcanza al nuestro, y su prefactor $\prod(x_i^{1/2}+\bar x_i^{1/2})$
+degenera precisamente en $x_i=-1$. No reclamamos más que esto: la familia es suya y el coset es
+nuestro.
+
 \begin{proof}[Esbozo de demostración]
 Escribe $D=N/V$ con $N=\det(y_i^{\mu_j})$ el bialternante sobre el alfabeto ordenado
 $y=(1,-1,t,t^{-1})$ y $\mu=(a{+}b{+}c{+}3,\;b{+}c{+}2,\;c{+}1,\;0)$. Expande $N$ por Laplace
@@ -825,7 +851,14 @@ fundamental~\cite[Ec.~(4.15)]{AHMN}
 \end{equation}
 Su comprobación es correcta. Pero la hipótesis no es una propiedad de su modelo; por el
 Corolario~\ref{cor:dichotomy} es una propiedad de la \emph{representación}, y se invierte con
-la carga del centro. La Tabla~\ref{tab:flip} es el argumento entero.
+la carga del centro. La Tabla~\ref{tab:flip} es el argumento entero.\footnote{Que el período
+dependa de la representación no es tanto invisible en la literatura previa como no comentado
+en ella: la fórmula general en cinco dimensiones de Haba, Takenaga y Yamashita~\cite{HTY} ya
+lleva las contribuciones de tipo adjunto como $\cos(2\pi n a)$ frente a las de tipo fundamental
+como $\cos(\pi n a)$, períodos que difieren exactamente en el factor dos en cuestión. La
+distinción está presente en sus ecuaciones y se obtiene como consecuencia de las sumas de
+modos; no la hemos encontrado enunciada en ninguna parte como regla sobre qué armónicos pueden
+existir, y ese es el hueco que llena la carga del centro.}
 
 \begin{table}[t]
 \centering\small
@@ -956,7 +989,23 @@ Es un invariante distinto sobre un objeto distinto. El suyo se evalúa sobre las
 \emph{matrices de condiciones de contorno} $N\times N$ y restringe qué condiciones discretas
 pueden identificarse; el nuestro se evalúa sobre una \emph{representación irreducible}
 arbitraria a condiciones de contorno fijas, y restringe qué armónicos del potencial pueden ser
-no nulos. Ninguno calcula el otro. Dos rasgos de ese programa hacen la separación nítida y no
+no nulos. Ninguno calcula el otro.
+
+Una ecuación de ese programa sí merece ser nombrada como antecedente, y la nombramos. Haba,
+Hosotani y Kawamura exhiben, para $SU(2)$ y como ilustración de que las condiciones de contorno
+se mueven bajo transformaciones gauge, la equivalencia
+$(\tau_3,\tau_3,\mathbf{1})\sim(\tau_3,-\tau_3,-\mathbf{1})$~\cite[Ec.~(2.20)]{HHK}, obtenida
+de $\Omega=\exp\{i(\alpha y/2\pi R)\tau_2\}$ en $\alpha=\pi$ --- que en la normalización
+empleada aquí es exactamente un período de línea de Wilson. Esa es la sombra $N=2$ de
+\eqref{eq:principle}, y a quien la conozca hay que decirle por qué no contiene ya el enunciado.
+En $SU(2)$ el bloque \emph{es} el grupo, así que la holonomía $-\mathbf{1}$ es central de balde
+y no hace falta compensación alguna. Embebida en $SU(N)$ a lo largo de su propia
+relación~\cite[Ec.~(2.21)]{HHK}, esa misma matriz pasa a ser $\mathrm{diag}(\dots,-1,-1,\dots)$,
+que no es central, y de ahí no se sigue ningún enunciado sobre el centro. Lo que hace funcionar
+a \eqref{eq:principle} en $N=4$ es el twist, no el desplazamiento; ese es el paso sin
+contrapartida allí. Coherentemente, las palabras \emph{centro}, \emph{Weyl}, \emph{período} y
+\emph{$n$-alidad} no aparecen en \cite{HHK}, y su potencial efectivo se calcula únicamente a
+fases de línea de Wilson nulas. Dos rasgos de ese programa hacen la separación nítida y no
 una cuestión de énfasis: declina calcular potencial efectivo alguno (\emph{``we do not carry
 them out since our purpose is not to study the dynamics of models but to classify the
 BCs''}~\cite[p.~7]{KawamuraMiura}), y señala que la traza de la matriz de \emph{traslación}
@@ -1024,7 +1073,21 @@ $\delta(m):=\mathrm{mult}(m,0)-\mathrm{mult}(m,1)$:
 \begin{equation}\label{eq:Dstruct}
 \mathcal D\;=\;\pi^2\Big(\sum_{m\equiv2\,(4)}m^2\delta(m)\;-\;\sum_{m\equiv0\,(4)}m^2\delta(m)\Big).
 \end{equation}
-Pero la muesca es precisamente el enunciado $\delta(m)=0$ para todo $m$ par. Por tanto:
+Nada de \eqref{eq:Dstruct} es nuevo, y conviene ser preciso al respecto antes de extraer la
+consecuencia. Es el término $(k_1,k_2)=(0,\pm1)$ de la suma reticular de Coleman--Weinberg
+estándar derivada dos veces en $\alpha_2=\tfrac12$, donde la fase
+$\cos\big(\pi k_2(\tfrac m2+q)\big)$ mata los $m$ impares y deja $(-1)^{q+m/2}$ en el resto; la
+maniobra de sustituir el valor especial de la línea de Wilson, mirar qué clase de resto se
+cancela y leer el signo está escrita en Hosotani, Noda y
+Takenaga~\cite[Ecs.~(6.5)--(6.7)]{HNT} para este mismo orbifold y en Haba, Hosotani, Kawamura y
+Yamashita~\cite[Ec.~(46)]{HHKY}. Tampoco la gradación módulo cuatro es tan estructural como
+parece: sustituyendo $m=2m'$ colapsa a un peso alternante corriente,
+\[
+\mathcal D=-4\pi^2\sum_{m'}(-1)^{m'}m'^2\,\delta(2m'),
+\]
+de modo que \eqref{eq:Dstruct} es la curvatura estándar de winding líder escrita en clases de
+resto, y así debe leerse. Lo que no se sigue de nada de eso es el corolario, porque la muesca
+es precisamente el enunciado $\delta(m)=0$ para todo $m$ par. Por tanto:
 
 \begin{corolario}[Desacoplamiento]\label{cor:decoupling}
 Para toda representación admisible para el Modelo Estándar, la contribución del sector
@@ -1489,6 +1552,21 @@ arXiv:math/0311159.
 \bibitem{CiucuKrattenthaler} M.~Ciucu, C.~Krattenthaler, \emph{A factorization theorem for
 classical group characters, with applications to plane partitions and rhombus tilings},
 arXiv:0812.1251.
+\bibitem{HTY} N.~Haba, K.~Takenaga, T.~Yamashita, \emph{A general formula of the effective
+potential in 5D $SU(N)$ gauge theory on orbifold}, arXiv:hep-ph/0401185.
+\bibitem{HNT} Y.~Hosotani, S.~Noda, K.~Takenaga, \emph{Dynamical gauge symmetry breaking and
+mass generation on the orbifold $T^2/Z_2$}, arXiv:hep-ph/0403106.
+\bibitem{HHKY} N.~Haba, Y.~Hosotani, Y.~Kawamura, T.~Yamashita, \emph{Dynamical symmetry
+breaking in gauge-Higgs unification on orbifold}, arXiv:hep-ph/0401183.
+\bibitem{Weiss} N.~Weiss, \emph{Effective potential for the order parameter of gauge theories
+at finite temperature}, Phys.\ Rev.\ D \textbf{24} (1981) 475.
+\bibitem{GPY} D.~J.~Gross, R.~D.~Pisarski, L.~G.~Yaffe, \emph{QCD and instantons at finite
+temperature}, Rev.\ Mod.\ Phys.\ \textbf{53} (1981) 43.
+\bibitem{RobergeWeiss} A.~Roberge, N.~Weiss, \emph{Gauge theories with imaginary chemical
+potential and the phases of QCD}, Nucl.\ Phys.\ B \textbf{275} (1986) 734.
+\bibitem{UnsalYaffe} M.~\"Unsal, L.~G.~Yaffe, \emph{Center-stabilized Yang--Mills theory:
+confinement and large $N$ volume independence}, Phys.\ Rev.\ D \textbf{78} (2008) 065035,
+arXiv:0803.0344.
 \bibitem{HHK} N.~Haba, Y.~Hosotani, Y.~Kawamura, \emph{Classification and dynamics of
 equivalence classes in $SU(N)$ gauge theory on the orbifold $S^1/Z_2$}, Prog.\ Theor.\ Phys.\
 \textbf{111} (2004) 265, arXiv:hep-ph/0309088.

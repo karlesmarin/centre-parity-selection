@@ -334,9 +334,13 @@ derivation of the $(m,q)$ projection from the boundary conditions (\S\ref{sec:pr
 which in this construction had been used as a calibrated input. Figure~\ref{fig:roadmap} is
 the route.
 
-\emph{Established here:} the principle --- one period of Wilson line is a central gauge
-transformation, so the centre charge is a statement about the potential and not only about
-the matter. \emph{Left open:} all four of its readings, which are the rest of the paper.
+\emph{Established here:} that in this orbifold the unit shift $\alpha_2\to\alpha_2+1$, which
+is \emph{not} central on its own, is Weyl-equivalent to the central element $-\mathbf{1}$,
+the $U_6$ twist supplying the compensating sign --- so that the standard centre/$n$-ality
+grading of a holonomy potential~\cite{Weiss,GPY,RobergeWeiss,UnsalYaffe} governs this model,
+where it is not manifest, and the centre charge becomes a statement about the potential and
+not only about the matter. \emph{Left open:} all four of its readings, which are the rest of
+the paper.
 
 
 
@@ -681,6 +685,27 @@ since every member of $\mathcal Z$ has $\lam$ even, $\mathcal Z$ is disjoint fro
 satisfying Part~II's gate.
 \end{theorem}
 
+The two branches are not on the same footing and we separate them. The first, $a,b,c$ all odd,
+says every $\mu_j$ has the same parity, so the two constant rows of the bialternant become
+proportional; it is the classical $\beta$-set parity obstruction and it is not special to our
+alphabet at all --- it is exactly the vanishing locus of $s_\lambda(1,-1,y_1,y_2)$ with $y_1,y_2$
+\emph{free}. It should be read as standard. The second, $a=c$ with $b$ odd, is not a
+symmetric-function identity in free variables: released from $y_2=y_1^{-1}$ it stops vanishing,
+and over the labels up to $5$ the two loci differ in exactly the six shapes $(0,1,0)$, $(0,3,0)$,
+$(2,1,2)$, $(2,3,2)$, $(4,1,4)$, $(4,3,4)$, all of this branch. It lives on the orthogonal coset
+and nowhere else, which is why its natural statement is the one of \S\ref{sec:reflections}:
+the $GL(4)$ character vanishes identically on $O(4)^-$, equivalently
+$\mathrm{Res}\,V_\lambda\cong\mathrm{Res}\,V_\lambda\otimes\det$.
+
+One ancestor deserves naming for this branch specifically. Ayyer and
+Behrend's factorization theorem~\cite[Thm.~1]{AyyerBehrend} is stated for partitions with
+$\lambda_1+\lambda_4=\lambda_2+\lambda_3=2k$, which for four rows is exactly $a=c$, and its
+half-partition case is exactly $b$ odd --- their shape hypothesis is our branch, in its more
+delicate sub-case. Their alphabet is $(x_1,x_2,\bar x_1,\bar x_2)$, the identity component, so
+the theorem does not reach ours, and their prefactor $\prod(x_i^{1/2}+\bar x_i^{1/2})$
+degenerates precisely at $x_i=-1$. We claim no more than that the family is theirs and the
+coset is ours.
+
 \begin{proof}[Proof sketch]
 Write $D=N/V$ with $N=\det(y_i^{\mu_j})$ the bialternant on the ordered alphabet
 $y=(1,-1,t,t^{-1})$ and $\mu=(a{+}b{+}c{+}3,\;b{+}c{+}2,\;c{+}1,\;0)$. Laplace-expand $N$
@@ -800,7 +825,14 @@ region~\cite[Eq.~(4.15)]{AHMN}
 \end{equation}
 Their check is correct. But the hypothesis is not a property of their model; by
 Corollary~\ref{cor:dichotomy} it is a property of the \emph{representation}, and it flips
-with the centre charge. Table~\ref{tab:flip} is the whole argument.
+with the centre charge. Table~\ref{tab:flip} is the whole argument.\footnote{That the period
+depends on the representation is not invisible in the earlier literature so much as
+unremarked in it: the general five-dimensional formula of Haba, Takenaga and
+Yamashita~\cite{HTY} already carries adjoint-type contributions as $\cos(2\pi n a)$ against
+fundamental-type ones as $\cos(\pi n a)$, periods differing by exactly the factor of two at
+issue. The distinction is present in their equations and is drawn as a consequence of the
+mode sums; we have found it stated nowhere as a rule about which harmonics may exist, and
+that is the gap the centre charge fills.}
 
 \begin{table}[t]
 \centering\small
@@ -928,7 +960,22 @@ That is a different invariant on a different object. Theirs is evaluated on the 
 \emph{boundary-condition matrices} and constrains which discrete boundary conditions may be
 identified; ours is evaluated on an arbitrary \emph{irreducible representation} at fixed
 boundary conditions, and constrains which harmonics of the potential may be non-zero. The two
-do not compute one another. Two features of that programme make the separation sharp rather
+do not compute one another.
+
+One equation of that programme does deserve to be named as an antecedent, and we name it.
+Haba, Hosotani and Kawamura exhibit, for $SU(2)$ and as an illustration that boundary
+conditions move under gauge transformations, the equivalence
+$(\tau_3,\tau_3,\mathbf{1})\sim(\tau_3,-\tau_3,-\mathbf{1})$~\cite[Eq.~(2.20)]{HHK},
+obtained from $\Omega=\exp\{i(\alpha y/2\pi R)\tau_2\}$ at $\alpha=\pi$ --- which in the
+normalization used here is exactly one period of Wilson line. That is the $N=2$ shadow of
+\eqref{eq:principle}, and a reader who knows it should be told why it does not already
+contain the statement. In $SU(2)$ the block \emph{is} the group, so the holonomy $-\mathbf{1}$
+is central for free and no compensation is needed. Embedded in $SU(N)$ along their own
+relation~\cite[Eq.~(2.21)]{HHK} the same matrix becomes $\mathrm{diag}(\dots,-1,-1,\dots)$,
+which is not central, and no centre statement follows. What makes \eqref{eq:principle} work at
+$N=4$ is the twist, not the shift; that is the step with no counterpart there. Consistently,
+the words \emph{centre}, \emph{Weyl}, \emph{period} and \emph{$n$-ality} do not occur in
+\cite{HHK}, and its effective potential is computed only at vanishing Wilson-line phases. Two features of that programme make the separation sharp rather
 than a matter of emphasis: it declines to compute an effective potential at all
 (``we do not carry them out since our purpose is not to study the dynamics of models but to
 classify the BCs''~\cite[p.~7]{KawamuraMiura}), and it notes that the trace of the
@@ -995,7 +1042,21 @@ $\delta(m):=\mathrm{mult}(m,0)-\mathrm{mult}(m,1)$:
 \begin{equation}\label{eq:Dstruct}
 \mathcal D\;=\;\pi^2\Big(\sum_{m\equiv2\,(4)}m^2\delta(m)\;-\;\sum_{m\equiv0\,(4)}m^2\delta(m)\Big).
 \end{equation}
-But the notch is precisely the statement $\delta(m)=0$ for all even $m$. Therefore:
+Nothing about \eqref{eq:Dstruct} is new, and it is worth being precise about that before
+drawing the consequence. It is the $(k_1,k_2)=(0,\pm1)$ term of the standard Coleman--Weinberg
+lattice sum differentiated twice at $\alpha_2=\tfrac12$, where the phase
+$\cos\big(\pi k_2(\tfrac m2+q)\big)$ kills odd $m$ and leaves $(-1)^{q+m/2}$ on the rest; the
+manoeuvre of substituting the special Wilson-line value, watching a residue class cancel and
+reading the sign is written out in Hosotani, Noda and Takenaga~\cite[Eqs.~(6.5)--(6.7)]{HNT}
+for this very orbifold and in Haba, Hosotani, Kawamura and
+Yamashita~\cite[Eq.~(46)]{HHKY}. Nor is the modulus-four grading as structural as it looks:
+substituting $m=2m'$ collapses it to a plain alternating weight,
+\[
+\mathcal D=-4\pi^2\sum_{m'}(-1)^{m'}m'^2\,\delta(2m'),
+\]
+so \eqref{eq:Dstruct} is the standard leading-winding curvature written in residue classes and
+should be read as such. What does not follow from any of that is the corollary, because the
+notch is precisely the statement $\delta(m)=0$ for all even $m$. Therefore:
 
 \begin{corollary}[Decoupling]\label{cor:decoupling}
 For every Standard-Model-admissible representation, the fermion sector's contribution to
@@ -1451,6 +1512,21 @@ arXiv:0812.1251.
 \bibitem{HHK} N.~Haba, Y.~Hosotani, Y.~Kawamura, \emph{Classification and dynamics of
 equivalence classes in $SU(N)$ gauge theory on the orbifold $S^1/Z_2$}, Prog.\ Theor.\ Phys.\
 \textbf{111} (2004) 265, arXiv:hep-ph/0309088.
+\bibitem{HTY} N.~Haba, K.~Takenaga, T.~Yamashita, \emph{A general formula of the effective
+potential in 5D $SU(N)$ gauge theory on orbifold}, arXiv:hep-ph/0401185.
+\bibitem{HNT} Y.~Hosotani, S.~Noda, K.~Takenaga, \emph{Dynamical gauge symmetry breaking and
+mass generation on the orbifold $T^2/Z_2$}, arXiv:hep-ph/0403106.
+\bibitem{HHKY} N.~Haba, Y.~Hosotani, Y.~Kawamura, T.~Yamashita, \emph{Dynamical symmetry
+breaking in gauge-Higgs unification on orbifold}, arXiv:hep-ph/0401183.
+\bibitem{Weiss} N.~Weiss, \emph{Effective potential for the order parameter of gauge theories
+at finite temperature}, Phys.\ Rev.\ D \textbf{24} (1981) 475.
+\bibitem{GPY} D.~J.~Gross, R.~D.~Pisarski, L.~G.~Yaffe, \emph{QCD and instantons at finite
+temperature}, Rev.\ Mod.\ Phys.\ \textbf{53} (1981) 43.
+\bibitem{RobergeWeiss} A.~Roberge, N.~Weiss, \emph{Gauge theories with imaginary chemical
+potential and the phases of QCD}, Nucl.\ Phys.\ B \textbf{275} (1986) 734.
+\bibitem{UnsalYaffe} M.~\"Unsal, L.~G.~Yaffe, \emph{Center-stabilized Yang--Mills theory:
+confinement and large $N$ volume independence}, Phys.\ Rev.\ D \textbf{78} (2008) 065035,
+arXiv:0803.0344.
 \bibitem{KawamuraMiura} Y.~Kawamura, T.~Miura, \emph{Equivalence Classes of Boundary
 Conditions in $SU(N)$ Gauge Theory on 2-dimensional Orbifolds}, arXiv:0905.4123.
 \bibitem{Takeuchi1} K.~Takeuchi, T.~Inagaki, \emph{A new classification method for
