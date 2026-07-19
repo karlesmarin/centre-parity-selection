@@ -1,0 +1,11 @@
+# Section 6: the fermion contribution is identically zero for every admissible rep; D_full is gauge-only
+rep,abc,D_fermion,D_full_gauge_plus_fermion
+35,"(4,0,0)",-157.9137,-185.5486
+60,"(0,2,1)",0.0,-27.6349
+84,"(0,1,3)",0.0,-27.6349
+140a,"(1,1,2)",0.0,-27.6349
+140b,"(0,3,1)",0.0,-27.6349
+216,"(0,4,1)",0.0,-27.6349
+224,"(1,2,2)",0.0,-27.6349
+280,"(0,2,3)",0.0,-27.6349
+360,"(1,3,2)",0.0,-27.6349

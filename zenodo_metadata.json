@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "upload_type": "publication",
+    "publication_type": "preprint",
+    "title": "A Centre-Charge Selection Rule for the Wilson-Line Potential: The Fundamental Domain of Gauge-Higgs Unification Is Representation-Dependent (Part III)",
+    "creators": [
+      {
+        "name": "Carles Marín Muñoz",
+        "affiliation": "Independent researcher",
+        "orcid": "0009-0007-5637-9688"
+      }
+    ],
+    "description": "<p><strong>The fundamental domain of gauge-Higgs unification is representation-dependent.</strong></p><p>Part II (DOI 10.5281/zenodo.21432627) identified its first gate &mdash; that a representation can display the Standard Model's fractional hypercharges only if its Z&#8324; centre charge a+2b+3c is odd &mdash; as the classical centre-charge congruence, and disclaimed it. This Part III shows that the disclaimed gate governs the Higgs sector, and for a reason that fits in one line: <em>advancing the Wilson line by one period is, up to a Weyl reflection, multiplication by the central element &minus;1 of Z(SU(4)) &mdash; and the centre charge is by definition how a representation responds to one.</em></p><p><strong>Centre-parity selection.</strong> The Z&#8322; reduction of the centre charge determines which Fourier sector of the Wilson-line potential is allowed to be non-zero. A representation answers the central element with the scalar (&minus;1)^(a+2b+3c), and the sector carrying the opposite sign is <em>identically empty</em> &mdash; not suppressed, absent. Matter admissibility, Kaluza&ndash;Klein twist pairing, the Fourier support of the potential and the geometry of its vacuum are four readings of that one bit. For fifty years the centre of the gauge group has been read as a restriction on matter; here it also restricts the potential.</p><p><strong>The consequence.</strong> Akamatsu, Hirose, Maru and Nago halve the Wilson-line search region to &alpha;&#8322; &isin; [0,1/2] using a hypothesis they verify by inspecting their Table 1: equal multiplicities of (m,0) and (m,1) at odd m. That hypothesis is decided by the centre charge, and it inverts on exactly the class of representations able to host the Standard Model, since Part II forces their centre charge odd while the gauge adjoint is unavoidably even. Verified directly on the potential: the 35 is period-1 in &alpha;&#8322; exactly, while every admissible representation violates it by 2&ndash;30% of its own scale. The half-domain reduction does not transfer and the full torus must be scanned. This is not an erratum for AHMN, whose field content satisfies its own hypothesis; it is a warning for everything downstream, and the failure mode is silent.</p><p><strong>An exact decoupling.</strong> The notch annihilates the fermion representation's entire contribution to the leading Kaluza&ndash;Klein order of the curvature at &alpha;&#8322;=1/2, leaving a gauge-only constant identical across all eight admissible representations. The leading order is degenerate <em>by theorem</em>, so any naturalness ranking over this class is a statement about subleading terms whether or not it is presented as one.</p><p><strong>Scope.</strong> The mechanism is neither an accident nor universal: the shift equals a central element only when the Wilson-line-neutral slots carry balanced twist signs, which for a single Wilson-line direction requires N even. A brute-force sweep gives no admissible alphabet for SU(3), SU(5), SU(7) and many for SU(4), SU(6), SU(8) &mdash; so SU(4) is the smallest group that can carry this selection rule.</p><p><strong>Included:</strong> the paper in English and Spanish; a sorry-free Lean 4 certificate of the classification theorem; the numbers behind every table and figure as CSV; every script that regenerates a quoted number; and <code>notch_preflight.py</code>, a one-parity-bit check of whether a given representation's fundamental-domain reduction is legal.</p><p><strong>Honesty ledger.</strong> The centre-charge congruence is classical and we claim none of it. The mechanism behind the vanishing theorem is classical too &mdash; {1,&minus;1,t,1/t} has determinant &minus;1, so it parametrizes the improper component of O(4), where an irreducible representation and its associate &mu;&otimes;det have opposite characters &mdash; and the determinant technique is described by Ayyer and Behrend as routine. Ours are: the principle and its four readings, the dichotomy, the explicit classification of the degenerate class with its Lean certificate, the inversion of the fundamental domain with direct verification, the decoupling corollary, the derivation of the (m,q) projection from the boundary conditions, and the SU(N) sweep. Two classical sources remain unread and are flagged as such in the paper; neither is load-bearing for the physics.</p>",
+    "access_right": "open",
+    "license": "apache-2.0",
+    "language": "eng",
+    "keywords": [
+      "gauge-Higgs unification",
+      "Wilson line",
+      "Hosotani mechanism",
+      "orbifold",
+      "fundamental domain",
+      "selection rule",
+      "centre charge",
+      "n-ality",
+      "SU(4)",
+      "Kaluza-Klein",
+      "effective potential",
+      "Schur function",
+      "orthogonal group",
+      "associate representations",
+      "Littlewood restriction rule",
+      "Lean 4",
+      "formal verification",
+      "exact computation",
+      "extra dimensions",
+      "hep-ph",
+      "hep-th"
+    ],
+    "related_identifiers": [
+      {
+        "identifier": "10.5281/zenodo.21432627",
+        "relation": "continues",
+        "resource_type": "publication-preprint",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "10.5281/zenodo.21432625",
+        "relation": "references",
+        "resource_type": "publication-preprint",
+        "scheme": "doi"
+      },
+      {
+        "identifier": "arXiv:2603.05857",
+        "relation": "isDerivedFrom",
+        "resource_type": "publication-preprint",
+        "scheme": "arxiv"
+      },
+      {
+        "identifier": "arXiv:2411.04597",
+        "relation": "references",
+        "resource_type": "publication-preprint",
+        "scheme": "arxiv"
+      },
+      {
+        "identifier": "https://github.com/karlesmarin/centre-parity-selection",
+        "relation": "isSupplementedBy",
+        "resource_type": "software",
+        "scheme": "url"
+      }
+    ]
+  }
+}
