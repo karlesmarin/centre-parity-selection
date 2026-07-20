@@ -16,6 +16,8 @@
 > - **Part II — *Three Gates to a Quark Generation***
 >   → [github.com/karlesmarin/su4-sm-cell-criterion](https://github.com/karlesmarin/su4-sm-cell-criterion) · [Zenodo 10.5281/zenodo.21432627](https://doi.org/10.5281/zenodo.21432627)
 > - **Part III — *A Centre-Charge Selection Rule for the Wilson-Line Potential*** (this repo)
+> - **Part IV — *Schur Functions at $(1,-1,t,t^{-1})$***
+>   → [github.com/karlesmarin/schur-nonidentity-o4](https://github.com/karlesmarin/schur-nonidentity-o4) · [Zenodo 10.5281/zenodo.21463000](https://doi.org/10.5281/zenodo.21463000)
 
 ## 🎯 The principle
 
@@ -138,7 +140,7 @@ scripts/   every script that regenerates a number quoted in the paper
 
 The centre-charge congruence is classical and we claim none of it. The mechanism behind the
 vanishing theorem is classical too — $\{1,-1,t,t^{-1}\}$ has determinant $-1$, so it
-parametrizes the improper component of $O(4)$, where an irrep and its associate
+parametrizes the non-identity component of $O(4)$, where an irrep and its associate
 $\mu\otimes\det$ have opposite characters — and the determinant technique is described by
 Ayyer and Behrend as routine. **What is ours:** the principle and its four readings, the
 dichotomy, the explicit classification of $\mathcal{Z}$ with its Lean certificate, the
