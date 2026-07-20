@@ -38,9 +38,7 @@ research assistant against a common machine-verifiable ground truth (exact ratio
 arithmetic on $SU(n)$ weight systems in SageMath, and a \texttt{sorry}-free Lean~4
 certificate for the central theorem); every number in this paper regenerates from the
 ancillary scripts.}}
-\date{\today\\[2pt]\small
-DOI: \href{https://doi.org/10.5281/zenodo.21438226}{10.5281/zenodo.21438226}
-\ \textnormal{(concept DOI --- always resolves to the current version)}}
+\date{\today}
 
 \begin{document}
 \maketitle
@@ -319,7 +317,7 @@ argument are all AHMN's~\cite{AHMN}; we quote their Section~4.3 verbatim in
 \S\ref{sec:domain} because our central physical claim is about the reach of \emph{their}
 hypothesis, not about an error in it --- their argument is correct for their model. The
 mechanism behind our vanishing theorem is likewise classical: the alphabet
-$\{1,-1,t,t^{-1}\}$ has determinant $-1$, so it parametrizes the improper component of
+$\{1,-1,t,t^{-1}\}$ has determinant $-1$, so it parametrizes the non-identity component of
 $O(4)$, where an irreducible representation and its associate $\mu\otimes\det$ have opposite
 characters and self-associate ones vanish~\cite{Brauer}; the branching is Littlewood's
 restriction rule with the Newell--King modification rules~\cite{King71,Newell,Brauer}, and
@@ -778,25 +776,63 @@ argument, which is finite and effective.}
 
 \paragraph{What is new here, and what is not.} The mechanism is classical and we state it
 plainly. The alphabet $\{1,-1,t,t^{-1}\}$ has determinant $-1$, so it is the generic
-semisimple element of the \emph{improper} component $O(4)^-$; an $O(4)$ irreducible
+semisimple element of the non-identity (\emph{improper}) component $O(4)^-$; an $O(4)$ irreducible
 representation and its associate $\mu\otimes\det$ have opposite characters there, and every
 $\mu=(\mu_1,\mu_2)$ with $\mu_2\ge1$ is self-associate and contributes
 nothing~\cite[Thm.~5]{Brauer}. Hence $D\equiv0$ iff the Littlewood branching multiset of
 $\lambda$ is stable under the associate involution, i.e.\ iff
 $c^\lambda_{(m)}=c^\lambda_{(m,1,1)}$ for all $m\ge1$ and $c^\lambda_\varnothing
 =c^\lambda_{(1^4)}$. Our proof \emph{is} that computation in another basis: one checks
-$V=-2[1]^3$, so the brackets $[x]$ are the improper-component characters
+$V=-2[1]^3$, so the brackets $[x]$ are the non-identity-component characters
 $\chi^-_{(x-1)}$ up to normalisation. We give the bialternant route because it avoids the
 modification bookkeeping --- Littlewood's rule is unmodified only for
 $\ell(\lambda)\le n/2=2$, i.e.\ only for $c=0$, and outside that range King's modification
 rules are required~\cite{King71,Newell,Brauer}, with illegal $O(4)$ labels appearing with
 multiplicity already for labels as small as $(2,1,2)$. That is a practical advantage, not a
 conceptual one. What we claim is the explicit arithmetic classification in Dynkin labels and
-its Lean certificate, not the phenomenon and not the technique.
+its Lean certificate, not the phenomenon and not the technique. The character value at an
+involution $(1^p,(-1)^q)$, which our bialternant route reproduces along the way, is likewise
+not ours: it is Karmakar~\cite[Thm.~4.1]{Karmakar}, with the same parity-split-of-$\lambda+\rho$
+device and the same column-subtraction-then-Laplace proof.
 
 \emph{Established here:} $\mathcal Z$ exactly, disjoint from Part~II's admissible class.
-\emph{Left open:} whether the classification is a corollary of some general improper-component
-criterion; we have not found one, and \S\ref{sec:ledger} records where we looked.
+
+\paragraph{Four questions this paper cannot answer.} Theorem~\ref{thm:Z} tells us exactly
+\emph{when} the shadow character vanishes, and the rest of this paper spends that fact. It
+leaves four things standing, and we state them as questions rather than as regrets because they
+are answerable and because the answers turned out to be one object:
+
+\begin{enumerate}\itemsep2pt
+\item[\textbf{Q1}] Is $\mathcal Z$ a corollary of some general criterion for a $GL(n)$ character
+to vanish on the non-identity component, or is it particular to $\su4$?
+\item[\textbf{Q2}] The theorem says where $D$ is zero. \emph{What is $D$ when it is not?} We use
+its coefficients throughout and never learn what function they belong to.
+\item[\textbf{Q3}] Why exactly two branches? Figure~\ref{fig:landscape} shows no third cause of
+vanishing, and we have no reason why there could not be one.
+\item[\textbf{Q4}] The moments $\sum_m m^{2r}\delta(m)$ decide everything that survives
+\S\ref{sec:decoupling}, and we obtain them by enumerating the weight system of each irreducible.
+Is there structure there, or is enumeration the only route?
+\end{enumerate}
+
+\emph{Answered elsewhere (v4).} All four are settled in Part~IV, and by a single statement: a
+closed form for $s_\lambda(1,-1,t,t^{-1})$ as $\pm$ a product of exactly three $SU(2)$
+characters read off the $2$-quotient of $\lambda$, or zero. \textbf{Q1} yes, and by something
+stronger than a criterion; \textbf{Q2} that product; \textbf{Q3} because a product of three
+characters has exactly two ways to be zero; \textbf{Q4} there is structure --- $\delta$ is a
+threefold convolution, so every moment is a polynomial in the three indices, and the enumeration
+is unnecessary. That is a statement about symmetric functions rather than about this model, it
+belongs to the factorisation programme of
+Ciucu--Krattenthaler and Ayyer--Behrend~\cite{CiucuKrattenthaler,AyyerBehrend} rather than to
+gauge--Higgs unification, and it is reported there rather than here.
+
+It is worth saying what comes back the other way, because the exchange is not one-sided. The
+closed form makes $D$ a product of exactly three $SU(2)$ characters, so $\delta(m)$ is a
+threefold convolution and its moments $\sum_m m^{2r}\delta(m)$ are \emph{polynomial} in the
+three indices. Those moments are exactly the quantities this paper had to extract by
+enumerating the weight system of each irreducible, and they are what decides the comparison
+between admissible representations once \S\ref{sec:decoupling} has removed the leading term.
+The question we exported to Part~IV as a curiosity about symmetric functions returns as the
+analytic handle on the subdominant structure we could describe here and not compute.
 
 % ===================================================================
 \section{The price: a fundamental domain that does not transfer}\label{sec:domain}
@@ -1219,12 +1255,15 @@ Table~\ref{tab:ledger} is that accounting.
 \textcolor{white}{Item} & \textcolor{white}{Inherited (cite)} & \textcolor{white}{Ours}\\
 \midrule
 centre-charge congruence &
-$\ZZ_4$ $n$-ality; fractional $Y$ locked to the centre~\cite{Hucks,Saller,Tong,Alonso,Slansky} &
+$\ZZ_4$ $n$-ality; fractional $Y$ locked to the centre~\cite{Hucks,Saller,Tong,Alonso,Slansky};
+congruency class as the invariant controlling Wilson-line breaking, in the Hosotani model
+itself~\cite{DaviesMcLachlan1,DaviesMcLachlan2} &
 nothing --- as in Part~II, we claim none of it\\
 \midrule
 \rowcolor{softgrey}
 orbifold, twists $(m,q)$, one-loop potential, Eq.~\eqref{eq:region} &
-AHMN~\cite{AHMN} &
+AHMN~\cite{AHMN,AHMN23}; the $\{A+B(-1)^{k_2}\}$ coefficients for the $\mathbf{35}$ are
+\cite[Eq.~(3.25)]{AHMN23} &
 the derivation of $(m,q)$ from the boundary conditions, and the multiplet reading of
 AHMN's Table~1\\
 \midrule
@@ -1260,12 +1299,37 @@ since $V_\mu$ and $V_\mu\otimes\det$ restrict to the same $SO(n)$-irreducible th
 involution is quotiented out before the question can be posed. One near neighbour deserves
 explicit separation: Ayyer--Kumari's Example~2.16 states an $O(4)$ parity criterion at
 $(x,-x)$, which looks identical to ours and is not --- their torus element has determinant
-$+1$, the \emph{proper} component. Two classical sources remain unread and are flagged as
-such: King's 1971 modification-rules paper in its own exposition, and Littlewood's book,
-Ch.~XI.
+$+1$, the \emph{proper} component.
+
+\emph{Updated in v4.} Littlewood's book, Ch.~XI, has since been obtained and read: it contains
+the self-associate mechanism (\S11.6, pp.~226--227; \S11.8, p.~235), so we cite it for that,
+but it does not contain the criterion on the $GL(n)$ weight $\lambda$. King's 1971 paper in its
+own exposition remains unreachable and is still flagged as unread; its abstract and a faithful
+reproduction elsewhere indicate it supplies the tool, not the theorem. And the search recorded
+above was itself deficient: it was run with a literature tool whose query builder silently
+discarded the discriminating terms of every query, so a null result from it certified nothing.
+The re-run, with that fixed and with INSPIRE-HEP and zbMATH Open added, is what produced the
+citations to~\cite{DaviesMcLachlan1,DaviesMcLachlan2,Karmakar,AHMN23} that this version adds.
 
 % ===================================================================
 \section{Reflections}\label{sec:reflections}
+\paragraph{A null from a search tool is not a gap (v4).} The previous version of this section
+recorded, correctly, that we had looked for a general non-identity-component criterion and not
+found one. What we did not record --- because we did not know it --- is that the literature
+tool used for part of that search was defective in a way that could only ever produce silence:
+its query builder kept the first few tokens of a query by position rather than by specificity,
+so the discriminating terms were discarded before the search ran, and several sources were not
+installed at all, leaving everything published before~1991 invisible. A tool in that state
+returns few or no references, and few or no references reads exactly like novelty. Two of the
+citations added in this version, \cite{DaviesMcLachlan1,DaviesMcLachlan2}, are from 1988 and
+1989, carry over one hundred citations each, and appear as the first two results of the first
+query once the tool works. We record this not as an apology but as a methodological point with
+teeth: \emph{a negative search result is evidence only in proportion to the demonstrated
+sensitivity of the search}, and the sensitivity must be established on a query whose answer is
+already known before any null is believed. The same discipline this paper applies to physical
+inferences --- see the next paragraph, and \S\ref{sec:decoupling} --- applies to bibliographic
+ones, and we had not been applying it.
+
 \paragraph{An inherited convention carries an unstated hypothesis.} Equation
 \eqref{eq:region} travels as a convention --- a fundamental domain, the kind of thing one
 copies without re-deriving. Its justifying hypothesis does not travel with it, and in this
@@ -1446,6 +1510,13 @@ DOI:\,10.5281/zenodo.21429144.
 Unification in Orbifold Models}, JHEP \textbf{02} (2004) 049, hep-th/0312267.
 \bibitem{AHMN} K.~Akamatsu, T.~Hirose, N.~Maru, A.~Nago, \emph{Two Higgs Doublet Model from
 Gauge--Higgs Unification in Six Dimensions}, arXiv:2603.05857.
+\bibitem{AHMN23} K.~Akamatsu, T.~Hirose, N.~Maru, A.~Nago, \emph{Electroweak Symmetry Breaking
+in Two Higgs Doublet Model from 6D Gauge--Higgs Unification on $T^2/\ZZ_2$},
+arXiv:2312.08608.
+\bibitem{DaviesMcLachlan1} A.T.~Davies, A.~McLachlan, \emph{Gauge group breaking by Wilson
+loops}, Phys.\ Lett.\ B \textbf{200} (1988) 305.
+\bibitem{DaviesMcLachlan2} A.T.~Davies, A.~McLachlan, \emph{Congruency class effects in the
+Hosotani model}, Nucl.\ Phys.\ B \textbf{317} (1989) 237.
 \bibitem{Slansky} R.~Slansky, \emph{Group theory for unified model building},
 Phys.\ Rept.\ \textbf{79} (1981) 1.
 \bibitem{Hucks} J.~Hucks, \emph{Global structure of the standard model, anomalies, and
@@ -1481,6 +1552,8 @@ unity: II}, arXiv:2212.12477.
 \bibitem{AyyerBehrend} A.~Ayyer, R.E.~Behrend, \emph{Factorization theorems for classical
 group characters, with applications to alternating sign matrices and plane partitions},
 J.\ Combin.\ Theory Ser.\ A \textbf{165} (2019) 78, arXiv:1804.04514.
+\bibitem{Karmakar} S.~Karmakar, \emph{Character values at elements of order 2},
+arXiv:2412.17324.
 \bibitem{Albion} S.P.~Albion, \emph{Universal characters twisted by roots of unity},
 arXiv:2212.07343.
 \bibitem{tHooft} G.~'t~Hooft, \emph{On the phase transition towards permanent quark

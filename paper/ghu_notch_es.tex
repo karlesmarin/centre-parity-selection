@@ -40,9 +40,7 @@ investigación IA contra una verdad-base verificable por máquina (aritmética r
 sobre los sistemas de pesos de $SU(n)$ en SageMath, y un certificado en Lean~4 libre de
 \texttt{sorry} para el teorema central); todo número de este trabajo se regenera desde los
 scripts anexos.}}
-\date{\today\\[2pt]\small
-DOI: \href{https://doi.org/10.5281/zenodo.21438226}{10.5281/zenodo.21438226}
-\ \textnormal{(DOI de concepto --- resuelve siempre a la versión vigente)}}
+\date{\today}
 
 \begin{document}
 \maketitle
@@ -327,7 +325,7 @@ dominio fundamental son todos de AHMN~\cite{AHMN}; citamos su Sección~4.3 liter
 \S\ref{sec:domain} porque nuestra afirmación física central es sobre el alcance de \emph{su}
 hipótesis, no sobre un error en ella --- su argumento es correcto para su modelo. El
 mecanismo tras nuestro teorema de anulación es asimismo clásico: el alfabeto
-$\{1,-1,t,t^{-1}\}$ tiene determinante $-1$, de modo que parametriza la componente impropia
+$\{1,-1,t,t^{-1}\}$ tiene determinante $-1$, de modo que parametriza la componente no identidad
 de $O(4)$, donde una representación irreducible y su asociada $\mu\otimes\det$ tienen
 caracteres opuestos y las autoasociadas se anulan~\cite{Brauer}; la ramificación es la regla
 de restricción de Littlewood con las reglas de modificación de Newell--King~\cite{King71,Newell,Brauer},
@@ -804,7 +802,7 @@ efectiva.}
 
 \paragraph{Qué es nuevo aquí y qué no.} El mecanismo es clásico y lo decimos con claridad. El
 alfabeto $\{1,-1,t,t^{-1}\}$ tiene determinante $-1$, de modo que es el elemento semisimple
-genérico de la componente \emph{impropia} $O(4)^-$; una representación irreducible de $O(4)$
+genérico de la componente no identidad (\emph{impropia}) $O(4)^-$; una representación irreducible de $O(4)$
 y su asociada $\mu\otimes\det$ tienen allí caracteres opuestos, y toda
 $\mu=(\mu_1,\mu_2)$ con $\mu_2\ge1$ es autoasociada y no contribuye
 nada~\cite[Thm.~5]{Brauer}. Por tanto $D\equiv0$ si y solo si el multiconjunto de
@@ -812,17 +810,58 @@ ramificación de Littlewood de $\lambda$ es estable bajo la involución de asoci
 decir, si y solo si $c^\lambda_{(m)}=c^\lambda_{(m,1,1)}$ para todo $m\ge1$ y
 $c^\lambda_\varnothing=c^\lambda_{(1^4)}$. Nuestra demostración \emph{es} ese cálculo en otra
 base: se comprueba $V=-2[1]^3$, de modo que los corchetes $[x]$ son los caracteres de la
-componente impropia $\chi^-_{(x-1)}$ salvo normalización. Damos la ruta del bialternante
+componente no identidad $\chi^-_{(x-1)}$ salvo normalización. Damos la ruta del bialternante
 porque evita la contabilidad de modificaciones --- la regla de Littlewood no está modificada
 solo para $\ell(\lambda)\le n/2=2$, esto es, solo para $c=0$, y fuera de ese rango se
 requieren las reglas de modificación de King~\cite{King71,Newell,Brauer}, apareciendo etiquetas
 ilegales de $O(4)$ con multiplicidad ya para etiquetas tan pequeñas como $(2,1,2)$. Eso es una
 ventaja práctica, no conceptual. Lo que reclamamos es la clasificación aritmética explícita
-en etiquetas de Dynkin y su certificado en Lean, no el fenómeno ni la técnica.
+en etiquetas de Dynkin y su certificado en Lean, no el fenómeno ni la técnica. El valor del
+carácter en una involución $(1^p,(-1)^q)$, que nuestra vía por el bialternante reproduce de
+camino, tampoco es nuestro: es Karmakar~\cite[Tma.~4.1]{Karmakar}, con el mismo dispositivo de
+corte por paridad de $\lambda+\rho$ y la misma demostración de resta de columnas seguida de
+Laplace.
 
 \emph{Establecido aquí:} $\mathcal Z$ exactamente, disjunta de la clase admisible de la
-Parte~II. \emph{Abierto:} si la clasificación es corolario de algún criterio general de
-componente impropia; no hemos hallado ninguno, y \S\ref{sec:ledger} registra dónde miramos.
+Parte~II.
+
+\paragraph{Cuatro preguntas que este artículo no puede responder.} El Teorema~\ref{thm:Z} dice
+exactamente \emph{cuándo} se anula el carácter sombra, y el resto del artículo gasta ese hecho.
+Deja cuatro cosas en pie, y las enunciamos como preguntas y no como lamentos porque son
+contestables y porque la respuesta resultó ser un solo objeto:
+
+\begin{enumerate}\itemsep2pt
+\item[\textbf{P1}] ¿Es $\mathcal Z$ corolario de algún criterio general para que un carácter de
+$GL(n)$ se anule en la componente no identidad, o es particular de $\su4$?
+\item[\textbf{P2}] El teorema dice dónde $D$ es cero. \emph{¿Qué es $D$ cuando no lo es?} Usamos
+sus coeficientes de principio a fin y nunca sabemos a qué función pertenecen.
+\item[\textbf{P3}] ¿Por qué exactamente dos ramas? La Figura~\ref{fig:landscape} no muestra una
+tercera causa de anulación, y no tenemos razón para que no pudiera haberla.
+\item[\textbf{P4}] Los momentos $\sum_m m^{2r}\delta(m)$ deciden todo lo que sobrevive a
+\S\ref{sec:decoupling}, y los obtenemos enumerando el sistema de pesos de cada irreducible.
+¿Hay estructura ahí, o la enumeración es la única vía?
+\end{enumerate}
+
+\emph{Contestadas en otro sitio (v4).} Las cuatro se resuelven en la Parte~IV, y con un solo
+enunciado: una forma cerrada para $s_\lambda(1,-1,t,t^{-1})$ como $\pm$ un producto de
+exactamente tres caracteres de $SU(2)$ leídos del $2$-cociente de $\lambda$, o cero. \textbf{P1}
+sí, y por algo más fuerte que un criterio; \textbf{P2} ese producto; \textbf{P3} porque un
+producto de tres caracteres tiene exactamente dos maneras de anularse; \textbf{P4} hay
+estructura --- $\delta$ es una convolución triple, así que todo momento es polinómico en los
+tres índices y la enumeración sobra. Eso es un enunciado sobre funciones simétricas, no sobre
+este modelo; pertenece al programa de factorización de
+Ciucu--Krattenthaler y Ayyer--Behrend~\cite{CiucuKrattenthaler,AyyerBehrend} y no a la
+unificación gauge--Higgs, y se reporta allí y no aquí.
+
+Conviene decir qué vuelve en sentido contrario, porque el intercambio no es unilateral. La
+forma cerrada convierte $D$ en un producto de exactamente tres caracteres de $SU(2)$, de modo
+que $\delta(m)$ es una convolución triple y sus momentos $\sum_m m^{2r}\delta(m)$ resultan
+\emph{polinómicos} en los tres índices. Esos momentos son justamente las cantidades que este
+artículo tuvo que extraer enumerando el sistema de pesos de cada irreducible, y son los que
+deciden la comparación entre representaciones admisibles una vez que \S\ref{sec:decoupling} ha
+eliminado el término dominante. La pregunta que exportamos a la Parte~IV como curiosidad sobre
+funciones simétricas vuelve como el asidero analítico de la estructura subdominante que aquí
+podíamos describir y no calcular.
 
 % ===================================================================
 \section{El precio: un dominio fundamental que no se transfiere}\label{sec:domain}
@@ -1252,12 +1291,15 @@ Cuadro~\ref{tab:ledger} es esa contabilidad.
 \textcolor{white}{Elemento} & \textcolor{white}{Heredado (citar)} & \textcolor{white}{Nuestro}\\
 \midrule
 congruencia de carga del centro &
-$n$-alidad $\ZZ_4$; $Y$ fraccionaria atada al centro~\cite{Hucks,Saller,Tong,Alonso,Slansky} &
+$n$-alidad $\ZZ_4$; $Y$ fraccionaria atada al centro~\cite{Hucks,Saller,Tong,Alonso,Slansky};
+la clase de congruencia como invariante que gobierna la ruptura por líneas de Wilson, en el
+propio modelo de Hosotani~\cite{DaviesMcLachlan1,DaviesMcLachlan2} &
 nada --- como en la Parte~II, no reclamamos nada de ello\\
 \midrule
 \rowcolor{softgrey}
 orbifold, twists $(m,q)$, potencial a un loop, Ec.~\eqref{eq:region} &
-AHMN~\cite{AHMN} &
+AHMN~\cite{AHMN,AHMN23}; los coeficientes $\{A+B(-1)^{k_2}\}$ para la $\mathbf{35}$ son
+\cite[Ec.~(3.25)]{AHMN23} &
 la derivación de $(m,q)$ desde las condiciones de contorno, y la lectura por multipletes de la Tabla~1\\
 \midrule
 lema de paridad~\ref{lem:parity} &
@@ -1293,12 +1335,38 @@ misma irreducible de $SO(n)$, la involución de asociación queda cocientada ant
 pregunta pueda plantearse. Un vecino cercano merece separación explícita: el Ejemplo~2.16 de
 Ayyer--Kumari enuncia un criterio de paridad de $O(4)$ en $(x,-x)$, que parece idéntico al
 nuestro y no lo es --- su elemento del toro tiene determinante $+1$, la componente
-\emph{propia}. Dos fuentes clásicas quedan sin leer y las señalamos como tales: el trabajo de
-King de 1971 sobre reglas de modificación en su propia exposición, y el libro de Littlewood,
-Cap.~XI.
+\emph{propia}.
+
+\emph{Actualizado en la v4.} El libro de Littlewood, Cap.~XI, ha sido obtenido y leído desde
+entonces: contiene el mecanismo autoasociado (\S11.6, pp.~226--227; \S11.8, p.~235), y por eso
+lo citamos, pero no contiene el criterio sobre el peso $\lambda$ de $GL(n)$. El trabajo de King
+de 1971 en su propia exposición sigue siendo inaccesible y sigue señalado como no leído; su
+resumen y una reproducción fiel en otro lugar indican que aporta la herramienta, no el teorema.
+Y la búsqueda registrada arriba era ella misma deficiente: se ejecutó con una herramienta
+bibliográfica cuyo constructor de consultas descartaba en silencio los términos discriminantes,
+de modo que un resultado nulo suyo no certificaba nada. La repetición, ya corregida y con
+INSPIRE-HEP y zbMATH Open añadidos, es lo que ha producido las citas a
+\cite{DaviesMcLachlan1,DaviesMcLachlan2,Karmakar,AHMN23} que esta versión incorpora.
 
 % ===================================================================
 \section{Reflexiones}\label{sec:reflections}
+\paragraph{Un nulo de una herramienta de búsqueda no es un hueco (v4).} La versión anterior de
+esta sección registraba, con razón, que habíamos buscado un criterio general de componente
+no identidad y no lo habíamos hallado. Lo que no registraba --- porque no lo sabíamos --- es que la
+herramienta bibliográfica empleada en parte de esa búsqueda era defectuosa de un modo que solo
+podía producir silencio: su constructor de consultas conservaba los primeros términos por
+posición y no por especificidad, de manera que los términos discriminantes se descartaban antes
+de buscar, y varias fuentes no estaban instaladas, dejando invisible todo lo publicado antes
+de~1991. Una herramienta en ese estado devuelve pocas referencias o ninguna, y pocas referencias
+o ninguna se lee exactamente igual que novedad. Dos de las citas que esta versión añade,
+\cite{DaviesMcLachlan1,DaviesMcLachlan2}, son de 1988 y 1989, superan las cien citas cada una, y
+aparecen como los dos primeros resultados de la primera consulta en cuanto la herramienta
+funciona. Lo dejamos escrito no como disculpa sino como punto metodológico con dientes:
+\emph{un resultado negativo de búsqueda es evidencia solo en proporción a la sensibilidad
+demostrada de esa búsqueda}, y esa sensibilidad debe establecerse con una consulta cuya
+respuesta ya se conoce, antes de creerse ningún nulo. La misma disciplina que este artículo
+aplica a las inferencias físicas se aplica a las bibliográficas, y no la estábamos aplicando.
+
 \paragraph{Una convención heredada porta una hipótesis no enunciada.} La
 Ecuación~\eqref{eq:region} viaja como convención --- un dominio fundamental, de esas cosas que
 uno copia sin rederivar. Su hipótesis justificante no viaja con ella, y en este caso la
@@ -1489,6 +1557,13 @@ DOI:\,10.5281/zenodo.21429144.
 Unification in Orbifold Models}, JHEP \textbf{02} (2004) 049, hep-th/0312267.
 \bibitem{AHMN} K.~Akamatsu, T.~Hirose, N.~Maru, A.~Nago, \emph{Two Higgs Doublet Model from
 Gauge--Higgs Unification in Six Dimensions}, arXiv:2603.05857.
+\bibitem{AHMN23} K.~Akamatsu, T.~Hirose, N.~Maru, A.~Nago, \emph{Electroweak Symmetry Breaking
+in Two Higgs Doublet Model from 6D Gauge--Higgs Unification on $T^2/\ZZ_2$},
+arXiv:2312.08608.
+\bibitem{DaviesMcLachlan1} A.T.~Davies, A.~McLachlan, \emph{Gauge group breaking by Wilson
+loops}, Phys.\ Lett.\ B \textbf{200} (1988) 305.
+\bibitem{DaviesMcLachlan2} A.T.~Davies, A.~McLachlan, \emph{Congruency class effects in the
+Hosotani model}, Nucl.\ Phys.\ B \textbf{317} (1989) 237.
 \bibitem{Slansky} R.~Slansky, \emph{Group theory for unified model building},
 Phys.\ Rept.\ \textbf{79} (1981) 1.
 \bibitem{Hucks} J.~Hucks, \emph{Global structure of the standard model, anomalies, and
@@ -1524,6 +1599,8 @@ unity: II}, arXiv:2212.12477.
 \bibitem{AyyerBehrend} A.~Ayyer, R.E.~Behrend, \emph{Factorization theorems for classical
 group characters, with applications to alternating sign matrices and plane partitions},
 J.\ Combin.\ Theory Ser.\ A \textbf{165} (2019) 78, arXiv:1804.04514.
+\bibitem{Karmakar} S.~Karmakar, \emph{Character values at elements of order 2},
+arXiv:2412.17324.
 \bibitem{Albion} S.P.~Albion, \emph{Universal characters twisted by roots of unity},
 arXiv:2212.07343.
 \bibitem{tHooft} G.~'t~Hooft, \emph{On the phase transition towards permanent quark
