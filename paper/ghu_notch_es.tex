@@ -417,7 +417,7 @@ $n=(n_1,n_2,n_3,n_4)$ de un peso, esta construcción se usa con $m=n_2-n_4$ y
 $q=n_3\bmod2$. Esa asignación suele justificarse contrastándola con la Tabla~1 de AHMN.
 Contrastar no es derivar, así que la derivamos.
 
-Los datos de contorno son los de AHMN: traslaciones $U_{5,6}$, paridades $P_i$ en los cuatro
+Los datos de contorno son los de AHMN, reunidos en la Figura~\ref{fig:fundamental}: traslaciones $U_{5,6}$, paridades $P_i$ en los cuatro
 puntos fijos, y las relaciones de consistencia $P_1=U_5P_0$, $P_2=U_6P_0$~\cite[Ec.~(2.8)]{AHMN},
 con la elección~\cite[Ecs.~(2.9)--(2.10)]{AHMN}
 \[
@@ -848,10 +848,10 @@ exactamente tres caracteres de $SU(2)$ leídos del $2$-cociente de $\lambda$, o 
 sí, y por algo más fuerte que un criterio; \textbf{P2} ese producto; \textbf{P3} porque un
 producto de tres caracteres tiene exactamente dos maneras de anularse; \textbf{P4} hay
 estructura --- $\delta$ es una convolución triple, así que todo momento es polinómico en los
-tres índices y la enumeración sobra. Eso es un enunciado sobre funciones simétricas, no sobre
-este modelo; pertenece al programa de factorización de
-Ciucu--Krattenthaler y Ayyer--Behrend~\cite{CiucuKrattenthaler,AyyerBehrend} y no a la
-unificación gauge--Higgs, y se reporta allí y no aquí.
+tres índices y la enumeración sobra. Eso es un enunciado sobre funciones simétricas, y se sitúa junto al programa de
+factorización de Ciucu--Krattenthaler y Ayyer--Behrend~\cite{CiucuKrattenthaler,AyyerBehrend}
+sin pertenecer a él ni a la línea de raíces de la unidad. La Parte~IV lo desarrolla; lo que
+devuelve a la física es el asunto del párrafo siguiente.
 
 Conviene decir qué vuelve en sentido contrario, porque el intercambio no es unilateral. La
 forma cerrada convierte $D$ en un producto de exactamente tres caracteres de $SU(2)$, de modo
@@ -923,7 +923,7 @@ necesita~\eqref{eq:region}.}
 
 Para el espectro total dependiente del valor esperado de vacío, gauge más fermión, la
 precondición de~\eqref{eq:region} se cumple para el $\mathbf{35}$ y falla para cada una de
-las ocho representaciones admisibles de dimensión $\le400$.
+las ocho representaciones admisibles de dimensión $\le756$.
 
 La Tabla~\ref{tab:vsahmn} pone los dos argumentos uno junto al otro, porque la relación entre
 ellos es fácil de malinterpretar. No contradecimos un resultado; identificamos la hipótesis que
@@ -976,11 +976,11 @@ $V(\alpha_1,\alpha_2)$:
 \rowcolor{hdrblue}
 \textcolor{white}{rep} & \textcolor{white}{$\mathbf{35}$} & \textcolor{white}{$\mathbf{60}$} &
 \textcolor{white}{$\mathbf{84}$} & \textcolor{white}{$\mathbf{140}a$} & \textcolor{white}{$\mathbf{140}b$} &
-\textcolor{white}{$\mathbf{216}$} & \textcolor{white}{$\mathbf{224}$} & \textcolor{white}{$\mathbf{280}$} &
-\textcolor{white}{$\mathbf{360}$}\\
+\textcolor{white}{$\mathbf{224}$} & \textcolor{white}{$\mathbf{280}$} & \textcolor{white}{$\mathbf{360}$} &
+\textcolor{white}{$\mathbf{756}$}\\
 \midrule
 $\max|V(\alpha_2{+}1)-V|/\text{escala}$ & $\mathbf{0}$ & $0.30$ & $0.21$ & $0.045$ & $0.12$ &
-$0.12$ & $0.095$ & $0.19$ & $0.023$\\
+$0.19$ & $0.12$ & $0.095$ & $0.023$\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -1070,7 +1070,7 @@ correcta y \emph{completa}, sin ninguna identificación adicional disponible par
 Vale la pena señalar un residuo, más que interpretarlo. La cizalla
 $\alpha_2\to\alpha_1+\alpha_2$ está rota, pero por un margen que cae monótonamente con la
 dimensión de la representación: $0.24$, $0.18$, $0.13$, $0.075$ y $0.027$ para el
-$\mathbf{35}$, $\mathbf{60}$, $\mathbf{84}$, $\mathbf{216}$ y $\mathbf{360}$
+$\mathbf{35}$, $\mathbf{60}$, $\mathbf{84}$, $\mathbf{280}$ y $\mathbf{756}$
 respectivamente. Si eso es una recuperación asintótica de una simetría modular en el límite
 de representación grande, o meramente el suavizado del potencial al contribuir más modos, no
 lo sabemos; una única sucesión monótona no es evidencia, y lo enunciamos solo como
@@ -1151,13 +1151,13 @@ instructivo. Contra la curvatura verdadera (convergida, $K_{\max}=16$):
 \rowcolor{hdrblue}
 \textcolor{white}{rep} & \textcolor{white}{$\mathbf{35}$} & \textcolor{white}{$\mathbf{60}$} &
 \textcolor{white}{$\mathbf{84}$} & \textcolor{white}{$\mathbf{140}a$} & \textcolor{white}{$\mathbf{140}b$} &
-\textcolor{white}{$\mathbf{216}$} & \textcolor{white}{$\mathbf{224}$} & \textcolor{white}{$\mathbf{280}$} &
-\textcolor{white}{$\mathbf{360}$}\\
+\textcolor{white}{$\mathbf{224}$} & \textcolor{white}{$\mathbf{280}$} & \textcolor{white}{$\mathbf{360}$} &
+\textcolor{white}{$\mathbf{756}$}\\
 \midrule
 $\mathcal D$ (orden dominante) & $-185.5$ & $-27.6$ & $-27.6$ & $-27.6$ & $-27.6$ & $-27.6$ & $-27.6$ & $-27.6$ & $-27.6$\\
 \rowcolor{softgrey}
-$\partial^2_{\alpha_2}V$ real en $\tfrac12$ & $-200.6$ & $+21.2$ & $-5.8$ & $-85.1$ & $-188.6$ & $+255.2$ & $-160.4$ & $+16.8$ & $+245.5$\\
-el signo coincide & sí & \textbf{no} & sí & sí & sí & \textbf{no} & sí & \textbf{no} & \textbf{no}\\
+$\partial^2_{\alpha_2}V$ real en $\tfrac12$ & $-200.6$ & $+21.2$ & $-5.8$ & $-85.1$ & $-188.6$ & $+16.8$ & $+255.2$ & $-160.4$ & $+245.5$\\
+el signo coincide & sí & \textbf{no} & sí & sí & sí & \textbf{no} & \textbf{no} & sí & \textbf{no}\\
 \bottomrule
 \end{tabular}
 \end{center}

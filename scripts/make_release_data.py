@@ -6,9 +6,8 @@ OUT = pathlib.Path("release_iii/data"); OUT.mkdir(parents=True, exist_ok=True)
 H = json.load(open("hists.json"))
 F = {k: [(int(a.split(',')[0]), int(a.split(',')[1]), m) for a, m in v.items()] for k, v in H.items()}
 GAUGE = [(1,0,2),(-1,0,2),(1,1,2),(-1,1,2),(2,0,1),(0,0,1),(-2,0,1)]
-LAB = {"35":(4,0,0),"60":(0,2,1),"84":(0,1,3),"140a":(1,1,2),"140b":(0,3,1),
-       "216":(0,4,1),"224":(1,2,2),"280":(0,2,3),"360":(1,3,2)}
-ORDER = ["35","60","84","140a","140b","216","224","280","360"]
+LAB = {"35":(4, 0, 0), "60":(0, 2, 1), "84":(0, 1, 3), "140a":(1, 1, 2), "140b":(0, 3, 1), "224":(0, 2, 3), "280":(0, 4, 1), "360":(1, 2, 2), "756":(1, 3, 2)}
+ORDER = ["35", "60", "84", "140a", "140b", "224", "280", "360", "756"]
 def parse(h):
     d = {}
     for k, v in h.items():
@@ -74,7 +73,7 @@ def Vg2(hf, KMAX=8, wg=0.35):
             for (k1,k2) in KS:
                 A[(k1*m)%M,(k2*m)%M] += sgn*mu/(k1*k1+k2*k2)**3*((-1)**((k2*q)%2))
     return np.real(np.fft.ifft2(A))*M*M
-reps5 = ["35","60","84","216","360"]
+reps5 = ["35", "60", "84", "280", "756"]
 Vs = {r: Vg2(F[r]) for r in reps5}
 i = np.arange(M); I,J = np.meshgrid(i,i,indexing="ij")
 rows = []

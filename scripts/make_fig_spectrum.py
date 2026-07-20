@@ -12,9 +12,8 @@ plt.rcParams.update({"font.family":"sans-serif","font.size":8,"axes.edgecolor":B
  "axes.facecolor":SURF,"figure.facecolor":SURF,"savefig.facecolor":SURF,"axes.linewidth":0.6})
 H=json.load(open("hists.json"))
 F={k:[(int(a.split(',')[0]),int(a.split(',')[1]),m) for a,m in v.items()] for k,v in H.items()}
-LAB={"35":"(4,0,0)","60":"(0,2,1)","84":"(0,1,3)","140a":"(1,1,2)","140b":"(0,3,1)",
-     "216":"(0,4,1)","224":"(1,2,2)","280":"(0,2,3)","360":"(1,3,2)"}
-order=["35","60","84","140a","140b","216","224","280","360"]
+LAB={"35":"(4,0,0)", "60":"(0,2,1)", "84":"(0,1,3)", "140a":"(1,1,2)", "140b":"(0,3,1)", "224":"(0,2,3)", "280":"(0,4,1)", "360":"(1,2,2)", "756":"(1,3,2)"}
+order = ["35", "60", "84", "140a", "140b", "224", "280", "360", "756"]
 KM=5; LIM=13
 def modes(hf):
     """amplitude at (n1,n2) coming from k2-ODD shells only -- the sector the notch controls."""
